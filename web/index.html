@@ -9,10 +9,18 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Scrolling Nav - Start Bootstrap Template</title>
+    <title>DevConf.cz 2017 - Jan 27-29 - FIT VUT Brno, Czech Republic</title>
+
+	<!-- Font Awesome 4.6.3 -->
+	<link rel="stylesheet" href="fa/css/font-awesome.min.css">
+
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Libre+Baskerville|Cutive+Mono">
+	<!-- ALTERNATE Fonts
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserat|Source+Code+Pro">
+	-->
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="css/scrolling-nav.css" rel="stylesheet">
@@ -24,6 +32,43 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Scrolling Nav JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+    <!-- <script src="js/scrolling-nav.js"></script> -->
+
+
+    <script type="text/javascript">
+	(function ($) {
+	  $(document).ready(function(){
+		
+		// hide .navbar first
+		$(".navbar").hide();
+		
+		// fade in .navbar
+		$(function () {
+			$(window).scroll(function () {
+				// set distance user needs to scroll before we fadeIn navbar
+				// FIXME: Make this START at the ABOUT page
+				if ($(this).scrollTop() > 300) {
+					$('.navbar').fadeIn();
+				} else {
+					$('.navbar').fadeOut();
+				}
+			});
+
+		
+		});
+
+	});
+	  }(jQuery));
+    </script>
+
 </head>
 
 <!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
@@ -31,50 +76,59 @@
 <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
     <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Start Bootstrap</a>
-            </div>
+	<nav class="navbar navbar-default navbar-fixed-top " role="navigation">
+	  <div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+		  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		  </button>
+		</div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav">
-                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
-                    <li class="hidden">
-                        <a class="page-scroll" href="#page-top"></a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#about">About</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#services">Services</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		  <ul class="nav navbar-nav">
+			<li class="active"><a href="#">About</a></li>
+			<li><a href="#">Call for Papers (CfP)</a></li>
+			<li><a href="#">Contributors</a></li>
+			<li><a href="mailto:cward@redhat.com">Contact</a></li>
+		  </ul>
 
+		  <!-- FIXME: should be auto-centered! -->
+		  <a class="navbar-brand" href="#"><img src="img/devconf-cz-webopt.svg" lass="navbar-brand"/></a>
+
+		  <ul class="nav navbar-nav navbar-right">
+			<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> </a></li>
+			<li><a href="#"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+			<li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+			<li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+		  </ul>
+		</div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
     <!-- Intro Section -->
     <section id="intro" class="intro-section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
-                    <h1>Scrolling Nav</h1>
-                    <p><strong>Usage Instructions:</strong> Make sure to include the <code>scrolling-nav.js</code>, <code>jquery.easing.min.js</code>, and <code>scrolling-nav.css</code> files. To make a link smooth scroll to another section on the page, give the link the <code>.page-scroll</code> class and set the link target to a corresponding ID on the page.</p>
-                    <a class="btn btn-default page-scroll" href="#about">Click Me to Scroll Down!</a>
+				<!-- FIXME: move this to custom css -->
+                <div class="col-lg-12" style="font-family: 'Cutive Mono'">
+                    <h3 class="text-muted">January 27-29, 2016 • 9TH ANNUAL</h3>
+					<img src="img/devconf-cz-webopt.svg"/>
+					<!-- FIXME: make this a link to twitter? FIXME: Change COLOR -->
+                    <h1 class="text-danger">#DEFINEfuture</h1>
+                    <h3 class="text-muted">FIT VUT  • Brno, Czech Republic</h3>
                 </div>
+
+				<div class="col-xs-4"></div>	
+				<div class="col-xs-4">
+					<h4 class="code" style="margin-top: 50px"> 
+					A free annual community conference for developers, admins, and users of Linux & JBoss 
+					</h4>
+				</div>	
+				<div class="col-xs-4"></div>	
             </div>
         </div>
     </section>
@@ -111,16 +165,6 @@
             </div>
         </div>
     </section>
-
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- Scrolling Nav JavaScript -->
-    <script src="js/jquery.easing.min.js"></script>
-    <script src="js/scrolling-nav.js"></script>
 
 </body>
 
