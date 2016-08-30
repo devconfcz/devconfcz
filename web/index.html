@@ -21,9 +21,10 @@
 	<!-- Font Awesome 4.6.3 -->
 	<link rel="stylesheet" href="fa/css/font-awesome.min.css">
 
-	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Libre+Baskerville|Cutive+Mono">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
 	<!-- ALTERNATE Fonts
 	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserat|Source+Code+Pro">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Libre+Baskerville|Cutive+Mono">
 	-->
 
     <!-- Bootstrap Core CSS -->
@@ -56,34 +57,7 @@
     <script src="js/jquery.easing.min.js"></script>
     <!-- <script src="js/scrolling-nav.js"></script> -->
 
-
-    <script type="text/javascript">
-	(function ($) {
-	  $(document).ready(function(){
-
-		// hide .navbar first
-		$(".navbar").hide();
-
-		// fade in .navbar
-		$(function () {
-			$(window).scroll(function () {
-				// set distance user needs to scroll before we fadeIn navbar
-				// FIXME: Make this START at the ABOUT page
-        logo_pos = $("#devconf-logo").offset().top - $("#page-top").offset().top
-				if ($(this).scrollTop() > logo_pos) {
-					$('.navbar').fadeIn();
-				} else {
-					$('.navbar').fadeOut();
-				}
-			});
-
-
-		});
-
-	});
-	  }(jQuery));
-    </script>
-
+    <script src="js/devconf.js"></script>
 </head>
 
 <!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
