@@ -1,5 +1,5 @@
 .navbar {
-  padding-bottom: 0px;
+  padding: 0px;
 }
 
 .nav > li > a {
@@ -11,4 +11,5 @@
   transform: translateX(-50%);
   left: 50%;
   position: absolute;
+  padding-top: 10px;
 }
