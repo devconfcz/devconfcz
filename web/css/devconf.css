@@ -2,8 +2,13 @@
   padding-bottom: 0px;
 }
 
-.navbar-brand {
-  padding: 15px 0 0 0;
-  height: 60px;
-  width: 30%;
+.nav > li > a {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.top-branding {
+  transform: translateX(-50%);
+  left: 50%;
+  position: absolute;
 }
