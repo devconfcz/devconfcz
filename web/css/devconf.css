@@ -1,0 +1,9 @@
+.navbar {
+  padding-bottom: 0px;
+}
+
+.navbar-brand {
+  padding: 15px 0 0 0;
+  height: 60px;
+  width: 30%;
+}
