@@ -34,27 +34,77 @@ of those sections to manage the look and feel of the site. */
 .intro-section {
     height: 100%;
     padding-top: 150px;
+    padding-bottom: 25px;
     text-align: center;
     background: #fff;
 }
 
 .about-section {
-    height: 100%;
-    padding-top: 150px;
+    padding-top: 3%;
+    padding-bottom: 3%;
     text-align: center;
     background: #eee;
 }
 
-.services-section {
-    height: 100%;
-    padding-top: 150px;
+.cfp-section {
+    padding-top: 3%;
+    padding-bottom: 3%;
     text-align: center;
     background: #fff;
 }
 
-.contact-section {
-    height: 100%;
-    padding-top: 150px;
+.registration-section {
+    padding-top: 3%;
+    padding-bottom: 3%;
     text-align: center;
     background: #eee;
+}
+
+.testimonials-section {
+    padding-top: 3%;
+    padding-bottom: 3%;
+    text-align: center;
+    background: #fff;
+}
+
+.schedule-section {
+    padding-top: 3%;
+    padding-bottom: 3%;
+    text-align: center;
+    background: #eee;
+}
+
+.contact-section {
+    padding-top: 3%;
+    padding-bottom: 3%;
+    text-align: center;
+    background: #fff;
+}
+
+.brno-section {
+    padding-top: 3%;
+    padding-bottom: 3%;
+    text-align: center;
+    background: #eee;
+}
+
+.accommodation-section {
+    padding-top: 3%;
+    padding-bottom: 3%;
+    text-align: center;
+    background: #fff;
+}
+
+.sponsors-section {
+    padding-top: 3%;
+    padding-bottom: 3%;
+    text-align: center;
+    background: #eee;
+}
+
+.past-events-section {
+    padding-top: 3%;
+    padding-bottom: 3%;
+    text-align: center;
+    background: #fff;
 }
