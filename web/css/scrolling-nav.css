@@ -64,14 +64,14 @@ of those sections to manage the look and feel of the site. */
     padding-top: 3%;
     padding-bottom: 3%;
     text-align: center;
-    background: #fff;
+    background: #eee;
 }
 
 .schedule-section {
     padding-top: 3%;
     padding-bottom: 3%;
     text-align: center;
-    background: #eee;
+    background: #fff;
 }
 
 .contact-section {
@@ -106,12 +106,12 @@ of those sections to manage the look and feel of the site. */
     padding-top: 3%;
     padding-bottom: 3%;
     text-align: center;
-    background: #fff;
+    background: #eee;
 }
 
 .past-events-section {
     padding-top: 3%;
     padding-bottom: 3%;
     text-align: center;
-    background: #eee;
+    background: #fff;
 }
