@@ -44,6 +44,10 @@ of those sections to manage the look and feel of the site. */
     padding-bottom: 3%;
     text-align: center;
     background: #eee;
+/*    background-image: url('img/devconf_cz_2015_audience.jpg');
+    background-repeat: repeat;
+    background-attachment: fixed;
+*/
 }
 
 .cfp-section {
@@ -64,7 +68,7 @@ of those sections to manage the look and feel of the site. */
     padding-top: 3%;
     padding-bottom: 3%;
     text-align: center;
-    background: #fff;
+    background: #eee;
 }
 
 .schedule-section {
@@ -78,7 +82,7 @@ of those sections to manage the look and feel of the site. */
     padding-top: 3%;
     padding-bottom: 3%;
     text-align: center;
-    background: #eee;
+    background: #fff;
 }
 
 .brno-section {
@@ -106,12 +110,17 @@ of those sections to manage the look and feel of the site. */
     padding-top: 3%;
     padding-bottom: 3%;
     text-align: center;
-    background: #fff;
+    background: #eee;
 }
 
 .past-events-section {
     padding-top: 3%;
     padding-bottom: 3%;
+    text-align: center;
+    background: #fff;
+}
+
+.venue-section {
     text-align: center;
     background: #fff;
 }
