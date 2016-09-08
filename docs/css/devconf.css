@@ -3,6 +3,17 @@ body {
   font-size: 18px;
 }
 
+a {
+    color: #7565A3;
+}
+
+a:link {
+    color: #7565A3;
+}
+
+a:visited {
+    color: #8786df;
+}
 .btn-purple {
   background-color: hsl(299, 29%, 29%) !important;
   background-repeat: repeat-x;
@@ -66,7 +77,7 @@ body {
 }
 
 .social {
-  font-size: 1.5em;
+  font-size: 0.90em;
 }
 
 @media (max-width: 991px) {
