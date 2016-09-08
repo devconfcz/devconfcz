@@ -1,5 +1,6 @@
-* {
-  font-family: 'Overpass', sans-serif;
+body {
+  font-family: "Overpass", sans-serif;
+  font-size: 16px;
 }
 
 .btn-purple {
@@ -17,7 +18,7 @@
   color: #fff !important;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.62);
   -webkit-font-smoothing: antialiased;
-  font-size: 150%;
+  font-size: 1.5vw;
   font-weight: bold;
 }
 
@@ -36,7 +37,7 @@
   color: #eee !important;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.75);
   -webkit-font-smoothing: antialiased;
-  font-size: 150%;
+  font-size: 1.5vw;
   font-weight: bold;
 }
 
