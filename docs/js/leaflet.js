@@ -33,7 +33,12 @@ function main() {
 //  click on the map makes the popup dissapear
   $(".leaflet-control-zoom").css("visibility", "hidden");
 
+  $("section").not("#venue").click(function(){
+    mymap.scrollWheelZoom.disable();
+  });
+
+  mymap.on('click', function() {
+    mymap.scrollWheelZoom.enable();
+  });
+
 }
-
-
-
