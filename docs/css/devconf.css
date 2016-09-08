@@ -52,6 +52,11 @@ a:visited {
   font-weight: bold;
 }
 
+.intro-section {
+  background: #ffffff url('img/petrov_brno_transparent_light_med_bg_1.png') no-repeat center center;
+  background-size: auto;
+}
+
 .white {
   color: #fff
 }
