@@ -55,6 +55,7 @@ a:visited {
 .intro-section {
   background: #ffffff url('img/petrov_brno_transparent_light_med_bg_1.png') no-repeat center center;
   background-size: auto;
+  height: 100vh;
 }
 
 .white {
