@@ -1,0 +1,38 @@
+/* * {
+  font-family: 'Ubuntu', sans-serif;
+}
+*/
+
+.white {
+  color: #fff
+}
+
+.purple {
+  color: #8786df
+}
+
+.navbar {
+  padding: 0px;
+}
+
+.nav > li > a {
+  padding-right: 10px;
+  padding-left: 10px;
+}
+
+.top-branding {
+  transform: translateX(-50%);
+  left: 50%;
+  position: absolute;
+  padding-top: 10px;
+}
+
+.social {
+  font-size: 1.5em;
+}
+
+@media (max-width: 991px) {
+    .top-branding {
+      left: 60%;
+    }
+	}
