@@ -95,6 +95,9 @@ section {
   line-height: 160%;
 }
 
-h1 {
-  padding-bottom: 1em;
+.purple-row {
+  background-color: #8786df;
+  color: #fff;
+  padding: 0.5em;
+
 }
