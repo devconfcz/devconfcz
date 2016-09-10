@@ -57,70 +57,60 @@ of those sections to manage the look and feel of the site. */
 }
 
 .cfp-section {
-    padding-top: 3%;
     padding-bottom: 3%;
     text-align: center;
     background: #fff;
 }
 
 .registration-section {
-    padding-top: 3%;
     padding-bottom: 3%;
     text-align: center;
     background: #eee;
 }
 
 .testimonials-section {
-    padding-top: 3%;
     padding-bottom: 3%;
     text-align: center;
     background: #eee;
 }
 
 .schedule-section {
-    padding-top: 3%;
     padding-bottom: 3%;
     text-align: center;
     background: #fff;
 }
 
 .contact-section {
-    padding-top: 3%;
     padding-bottom: 3%;
     text-align: center;
     background: #fff;
 }
 
 .brno-section {
-    padding-top: 3%;
     padding-bottom: 3%;
     text-align: center;
     background: #eee;
 }
 
 .accommodation-section {
-    padding-top: 3%;
     padding-bottom: 3%;
     text-align: center;
     background: #fff;
 }
 
 .faq-section {
-    padding-top: 3%;
     padding-bottom: 3%;
     text-align: center;
     background: #eee;
 }
 
 .sponsors-section {
-    padding-top: 3%;
     padding-bottom: 3%;
     text-align: center;
     background: #eee;
 }
 
 .past-events-section {
-    padding-top: 3%;
     padding-bottom: 3%;
     text-align: center;
     background: #fff;
