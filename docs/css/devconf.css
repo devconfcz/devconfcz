@@ -71,12 +71,6 @@ a:visited {
   font-size: 0.90em;
 }
 
-@media (max-width: 991px) {
-    .top-branding {
-      left: 60%;
-    }
-	}
-
 section {
   line-height: 160%;
 }
