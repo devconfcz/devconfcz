@@ -22,8 +22,7 @@ function scroll_to_section(section /* Pass element id with # */) {
   // hook on scroll and show/hide navbar
   $(function () {
     $(window).scroll(function () {
-      // set distance user needs to scroll before we fadeIn navbar
-      // FIXME: Make this START at the ABOUT page
+      // Keep amount of things here at minimum to keep it smooth on low-end devices
       if ($(this).scrollTop() > logo_pos) {
         $('.navbar-brand').fadeIn();
       } else {
