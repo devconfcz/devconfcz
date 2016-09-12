@@ -25,6 +25,8 @@ a:visited {
   -webkit-font-smoothing: antialiased;
   font-size: 1.3em;
   font-weight: bold;
+  line-height: 1;
+  padding: 0.75ex 2ex 0.5ex;
 }
 
 .btn-orange {
@@ -43,16 +45,17 @@ a:visited {
   color: #fff
 }
 
-.purple {
-  color: #8786df
+.tagline {
+  color: #8786df;
+  font-size: 2em;
 }
 
 .navbar {
-  padding: 0px;
+  padding: 0;
 }
 
 .navbar-brand {
-  padding-top: 0px;
+  padding-top: 0;
 }
 
 .nav > li > a {
@@ -72,12 +75,15 @@ a:visited {
 }
 
 section {
-  line-height: 160%;
+  line-height: 1.6;
+  clear: both;
+  overflow: hidden;
+  display: block;
 }
 
-.purple-row {
+section h2 {
+  clear: both;
   background-color: #8786df;
   color: #fff;
   padding: 0.5em;
-
 }
