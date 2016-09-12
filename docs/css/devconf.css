@@ -1,9 +1,10 @@
 body {
   font-family: "Open Sans", sans-serif;
   font-size: 18px;
+  color: #333;
 }
 
-nav, h1, h2, h3, h4, h5, h6 {
+nav, .intro-content, h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
   font-family: "Montserrat", sans-serif;
 }
@@ -28,10 +29,10 @@ a:visited {
   color: #fff !important;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.62);
   -webkit-font-smoothing: antialiased;
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-weight: bold;
   line-height: 1;
-  padding: 0.75ex 2ex 0.5ex;
+  padding: 0.75ex 2ex;
 }
 
 .btn-orange {
@@ -53,7 +54,8 @@ a:visited {
 .tagline {
   font-family: Roboto Mono, monospace;
   color: #8786df;
-  font-size: 2em;
+  font-size: 140%;
+  font-weight: bold;
 }
 
 .navbar {
@@ -81,40 +83,59 @@ a:visited {
 }
 
 section {
+  background: #fff;
   line-height: 1.6;
   clear: both;
-  overflow: hidden;
   display: block;
+  padding: 0 0 4em;
 }
 
 section h2 {
   text-align: center;
   clear: both;
   background-color: #8786df;
+  background-color: #8786dfcc;
   color: #fff;
-  padding: 0.5em;
+  padding: 0.75em;
+  margin: 0 0 1em;
 }
 
 h3, h4, h5, h6 {
   padding: 2em 0 1em;
 }
 
-.intro-section {
-  background: #fff url("../img/petrov_brno-illustration2.png") no-repeat 100% 100%;
-  background-size: contain;
-  padding-top: 100px;
-  padding-bottom: 25px;
+h3.first {
+  padding-top: 0;
 }
 
+.intro-section {
+  text-align: center;
+  background: #fff url("../img/petrov_brno-illustration2.png") no-repeat 100% 100%;
+  background-size: contain;
+  padding: 100px 0 25px;
+  font-size: 130%;
+  color: #999;
+}
+
+.intro-content > div {
+  padding: 1em 0;
+}
+
+.intro-text {
+  margin: 0 auto;
+  max-width: 20em;
+}
+
+.time-and-place {
+}
+
+.time-and-place address {
+  margin: 0;
+}
 
 .about-section {
   padding-bottom: 3%;
   background: #eee;
-}
-
-section {
-  padding-bottom: 1em;
-  background: #fff;
 }
 
 .registration-section,
