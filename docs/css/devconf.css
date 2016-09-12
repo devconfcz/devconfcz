@@ -154,6 +154,10 @@ h3.first {
   background: #eee;
 }
 
+.venue-section h2 {
+  margin-bottom: 0;
+}
+
 .sponsors-section {
   text-align: center;
 }
@@ -165,4 +169,8 @@ h3.first {
 
 .fa {
   margin-right: 0.5ex;
+}
+
+h2 .fa {
+  margin-right: 0;
 }
