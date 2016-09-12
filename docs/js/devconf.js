@@ -1,6 +1,6 @@
 function scroll_to_section(section /* Pass element id with # */) {
   // Get position of scroll target from top
-  scroll_to = $(section).offset().top - $("#page-top").offset().top - ( $(".purple-row").outerHeight() / 2 )
+  scroll_to = $(section).offset().top - $("#page-top").offset().top - ( $(section + " h2").outerHeight() / 2 )
   $('html, body').animate({
     scrollTop: scroll_to
  }, 1000);
