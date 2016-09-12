@@ -153,6 +153,10 @@ h3.first {
   background: #eee;
 }
 
+.sponsors-section {
+  text-align: center;
+}
+
 .footer-section {
   height: 20px;
   background: #000;
