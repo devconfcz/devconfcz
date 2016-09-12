@@ -1,18 +1,23 @@
 body {
-  font-family: "Overpass", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 18px;
 }
 
+nav, h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+  font-family: "Montserrat", sans-serif;
+}
+
 a {
-    color: #7565A3;
+  color: #7565A3;
 }
 
 a:link {
-    color: #7565A3;
+  color: #7565A3;
 }
 
 a:visited {
-    color: #8786df;
+  color: #8786df;
 }
 
 .btn-purple {
@@ -46,6 +51,7 @@ a:visited {
 }
 
 .tagline {
+  font-family: Roboto Mono, monospace;
   color: #8786df;
   font-size: 2em;
 }
@@ -82,8 +88,49 @@ section {
 }
 
 section h2 {
+  text-align: center;
   clear: both;
   background-color: #8786df;
   color: #fff;
   padding: 0.5em;
+}
+
+h3, h4, h5, h6 {
+  padding: 2em 0 1em;
+}
+
+.intro-section {
+  background: #fff url("../img/petrov_brno-illustration2.png") no-repeat 100% 100%;
+  background-size: contain;
+  padding-top: 100px;
+  padding-bottom: 25px;
+}
+
+
+.about-section {
+  padding-bottom: 3%;
+  background: #eee;
+}
+
+section {
+  padding-bottom: 1em;
+  background: #fff;
+}
+
+.registration-section,
+.testimonials-section,
+.brno-section,
+.faq-section,
+.faq-section,
+.sponsors-section {
+  background: #eee;
+}
+
+.footer-section {
+  height: 20px;
+  background: #000;
+}
+
+.fa {
+  margin-right: 0.5ex;
 }
