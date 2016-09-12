@@ -21,6 +21,15 @@ a:visited {
   color: #8786df;
 }
 
+.logo img {
+  max-width: 100%;
+  height: auto;
+}
+
+.intro-content .logo {
+  padding-left: 40px;
+}
+
 .btn-purple {
   background-color: hsl(299, 29%, 29%) !important;
   background-repeat: repeat-x;
@@ -124,9 +133,6 @@ h3.first {
 .intro-text {
   margin: 0 auto;
   max-width: 20em;
-}
-
-.time-and-place {
 }
 
 .time-and-place address {
