@@ -88,6 +88,7 @@ section {
   clear: both;
   display: block;
   padding: 0 0 4em;
+  overflow: hidden;
 }
 
 section h2 {
@@ -110,6 +111,7 @@ h3.first {
 }
 
 .intro-section {
+  overflow: hidden;
   text-align: center;
   background: #fff url("../img/petrov_brno-illustration2.png") no-repeat 80% 100%;
   background-size: contain;
@@ -124,7 +126,10 @@ h3.first {
 }
 
 .intro-content .logo {
-  padding-left: 40px;
+  /* Visually compensate for the .cz */
+  position: relative;
+  left: 20px;
+  overflow: hidden;
 }
 
 .intro-content > div {
@@ -173,4 +178,35 @@ h3.first {
 
 h2 .fa {
   margin-right: 0;
+}
+
+/* Mobile device tweaks */
+@media screen and (max-width: 752px) {
+  .intro-section {
+    padding-top: 75px;
+    font-size: inherit;
+    padding-bottom: 0;
+  }
+
+  .intro-content {
+    /* Add a light screen over the background */
+    background-color: rgba(255,255,255,0.5);
+    padding-bottom: 4em;
+  }
+
+  .intro-content > div {
+    padding: 0.75em 0;
+  }
+
+
+  .intro-section .logo {
+    left: 10px;
+    max-width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .intro-text {
+    max-width: 18em;
+  }
 }
