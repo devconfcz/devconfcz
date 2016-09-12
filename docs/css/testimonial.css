@@ -3,23 +3,18 @@
 /*----------------------------------------------------*/
 /* http://bootsnipp.com/snippets/featured/testimonials-based-on-bootstrap039s-6-primary-colors */
 
-.testimonial{
-    margin-bottom: 10px;
-    font-size: .8em;
+.testimonial {
+	margin-bottom: 10px;
 }
 
 .testimonial-section {
 	background-color: #fff;
-    width: 100%;
-    height: auto;
-    padding: 15px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    position: relative;
-    border: 1px solid #fff;
-    font-size: .8em;
-    line-height: 100%;
+	width: 100%;
+	height: auto;
+	padding: 15px;
+	border-radius: 5px;
+	position: relative;
+	border: 1px solid #fff;
 }
 
 .testimonial-section:after {
@@ -60,11 +55,9 @@
 }
 
 .testimonial-writer-designation{
-	font-size: 85%;
 }
 
 .testimonial-writer-company{
-	font-size: 85%;
 }
 
 /*---- Outlined Styles ----*/
@@ -81,7 +74,7 @@
 }
 
 .testimonial.testimonial-default .testimonial-desc{
-	
+
 }
 
 .testimonial.testimonial-default .testimonial-desc img{
@@ -107,7 +100,7 @@
 }
 
 .testimonial.testimonial-primary .testimonial-desc{
-	
+
 }
 
 .testimonial.testimonial-primary .testimonial-desc img{
@@ -132,7 +125,7 @@
 }
 
 .testimonial.testimonial-info .testimonial-desc{
-	
+
 }
 
 .testimonial.testimonial-info .testimonial-desc img{
@@ -159,7 +152,7 @@
 }
 
 .testimonial.testimonial-success .testimonial-desc{
-	
+
 }
 
 .testimonial.testimonial-success .testimonial-desc img{
@@ -171,7 +164,7 @@
 }
 
 .testimonial.testimonial-warning{
-	
+
 }
 
 .testimonial.testimonial-warning .testimonial-section{
@@ -185,7 +178,7 @@
 }
 
 .testimonial.testimonial-warning .testimonial-desc{
-	
+
 }
 
 .testimonial.testimonial-warning .testimonial-desc img{
@@ -197,7 +190,7 @@
 }
 
 .testimonial.testimonial-danger{
-	
+
 }
 
 .testimonial.testimonial-danger .testimonial-section{
@@ -211,7 +204,7 @@
 }
 
 .testimonial.testimonial-danger .testimonial-desc{
-	
+
 }
 
 .testimonial.testimonial-danger .testimonial-desc img{
@@ -224,7 +217,7 @@
 
 /*---- Filled Styles ----*/
 .testimonial.testimonial-default-filled{
-	
+
 }
 
 .testimonial.testimonial-default-filled .testimonial-section{
@@ -238,7 +231,7 @@
 }
 
 .testimonial.testimonial-default-filled .testimonial-desc{
-	
+
 }
 
 .testimonial.testimonial-default-filled .testimonial-desc img{
@@ -251,7 +244,7 @@
 }
 
 .testimonial.testimonial-primary-filled{
-	
+
 }
 
 .testimonial.testimonial-primary-filled .testimonial-section{
@@ -265,7 +258,7 @@
 }
 
 .testimonial.testimonial-primary-filled .testimonial-desc{
-	
+
 }
 
 .testimonial.testimonial-primary-filled .testimonial-desc img{
@@ -278,7 +271,7 @@
 }
 
 .testimonial.testimonial-info-filled{
-	
+
 }
 
 .testimonial.testimonial-info-filled .testimonial-section{
@@ -292,7 +285,7 @@
 }
 
 .testimonial.testimonial-info-filled .testimonial-desc{
-	
+
 }
 
 .testimonial.testimonial-info-filled .testimonial-desc img{
@@ -306,7 +299,7 @@
 
 
 .testimonial.testimonial-success-filled{
-	
+
 }
 .testimonial.testimonial-success-filled .testimonial-section{
 	color: #fff;
@@ -319,7 +312,7 @@
 }
 
 .testimonial.testimonial-success-filled .testimonial-desc{
-	
+
 }
 
 .testimonial.testimonial-success-filled .testimonial-desc img{
@@ -332,7 +325,7 @@
 }
 
 .testimonial.testimonial-warning-filled{
-	
+
 }
 
 .testimonial.testimonial-warning-filled .testimonial-section{
@@ -346,7 +339,7 @@
 }
 
 .testimonial.testimonial-warning-filled .testimonial-desc{
-	
+
 }
 
 .testimonial.testimonial-warning-filled .testimonial-desc img{
@@ -359,13 +352,13 @@
 }
 
 .testimonial.testimonial-danger-filled{
-	
+
 }
 
 .testimonial.testimonial-danger-filled .testimonial-section{
-		color: #fff;
-		background-color: #d9534f;
-		border-color: #d43f3a;
+	color: #fff;
+	background-color: #d9534f;
+	border-color: #d43f3a;
 }
 
 .testimonial.testimonial-danger-filled .testimonial-section:after{
@@ -373,7 +366,7 @@
 }
 
 .testimonial.testimonial-danger-filled .testimonial-desc{
-	
+
 }
 
 .testimonial.testimonial-danger-filled .testimonial-desc img{
