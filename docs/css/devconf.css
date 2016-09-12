@@ -21,15 +21,6 @@ a:visited {
   color: #8786df;
 }
 
-.logo img {
-  max-width: 100%;
-  height: auto;
-}
-
-.intro-content .logo {
-  padding-left: 40px;
-}
-
 .btn-purple {
   background-color: hsl(299, 29%, 29%) !important;
   background-repeat: repeat-x;
@@ -103,10 +94,11 @@ section h2 {
   text-align: center;
   clear: both;
   background-color: #8786df;
-  background-color: #8786dfcc;
+  background-color: #8786dfbb;
   color: #fff;
-  padding: 0.75em;
+  padding: 0.8em;
   margin: 0 0 1em;
+  text-shadow: 0 2px 4px #8786df;
 }
 
 h3, h4, h5, h6 {
@@ -119,11 +111,20 @@ h3.first {
 
 .intro-section {
   text-align: center;
-  background: #fff url("../img/petrov_brno-illustration2.png") no-repeat 100% 100%;
+  background: #fff url("../img/petrov_brno-illustration2.png") no-repeat 80% 100%;
   background-size: contain;
-  padding: 100px 0 25px;
+  padding: 100px 0 4em;
   font-size: 130%;
   color: #999;
+}
+
+.logo img {
+  max-width: 100%;
+  height: auto;
+}
+
+.intro-content .logo {
+  padding-left: 40px;
 }
 
 .intro-content > div {
