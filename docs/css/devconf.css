@@ -150,6 +150,10 @@ h3.first {
   background: #eee;
 }
 
+.venue-section {
+  padding-bottom: 0em;
+}
+
 .registration-section,
 .testimonials-section,
 .brno-section,
