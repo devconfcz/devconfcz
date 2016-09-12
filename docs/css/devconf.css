@@ -102,6 +102,10 @@ section h2 {
   text-shadow: 0 2px 4px #8786df;
 }
 
+section h2 a {
+  color: #fff !important;
+}
+
 h3, h4, h5, h6 {
   padding: 2em 0 1em;
 }
