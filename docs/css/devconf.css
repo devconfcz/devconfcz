@@ -64,6 +64,7 @@ a:visited {
 
 .navbar-brand {
   padding-top: 0;
+  display: none; /* jQuery cares about this */
 }
 
 .nav > li > a {
