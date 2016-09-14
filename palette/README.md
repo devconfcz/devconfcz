@@ -4,7 +4,7 @@
 |---|---|
 |Solid Black|#000000|
 |Near-Black|#333333|
-|Mystic Purple|#8d83e8|
+|Mystic Purple|#8e83e4|
 |Medium Grey|#888888|
 |Brilliant White|#ffffff|
 
