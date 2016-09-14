@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="css/font-awesome.min.css">
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400|Open+Sans:400,400i,700|Roboto+Mono" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400%7COpen+Sans:400,400i,700%7CRoboto+Mono" rel="stylesheet">
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -104,14 +104,27 @@
             <li><a href="#contact" onclick="scroll_to_section('#contact')">Contact</a></li>
           </ul>
 
-          <a class="top-branding hidden-md hidden-sm hidden-xs" href="#" onclick="scroll_to_section('#intro')"><img src="img/devconf-cz-webopt.svg" class="navbar-brand"></a>
+          <a class="top-branding hidden-md hidden-sm hidden-xs" href="#" onclick="scroll_to_section('#intro')"><img src="img/devconf-cz-webopt.svg" class="navbar-brand" alt="Back to top"></a>
 
           <ul class="nav navbar-nav navbar-right social">
-            <li><a href="https://openshift.devconf.cz/"><img src="img/winterofcode_logo_18x_30y.png" height=20 /></a></li>
-            <li><a href="https://twitter.com/devconf_cz"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-            <li><a href="https://www.facebook.com/DevConf.cz"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
-            <li><a href="https://www.youtube.com/channel/UCIHsqY_4eWeInVQnxZ7WSjg"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
-            <li><a href="https://plus.google.com/100374582019862201361"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+            <li><a href="https://openshift.devconf.cz/" title="Winter of Code"><img src="img/winterofcode_logo_18x_30y.png" height=20 alt="Winter of Code"></a></li>
+
+            <li><a href="https://twitter.com/devconf_cz" class="fa fa-twitter" title="Twitter">
+              <span class="hide">Twitter</span class="hide">
+            </a></li>
+
+            <li><a href="https://www.facebook.com/DevConf.cz" class="fa fa-facebook-official" title="Facebook">
+              <span class="hide">Facebook</span class="hide">
+            </a></li>
+
+            <li><a
+                href="https://www.youtube.com/channel/UCIHsqY_4eWeInVQnxZ7WSjg" class="fa fa-youtube-play" title="YouTube">
+              <span class="hide">YouTube</span class="hide">
+            </a></li>
+
+            <li><a href="https://plus.google.com/100374582019862201361" class="fa fa-google-plus" title="Google+">
+              <span class="hide">Google+</span class="hide">
+            </a></li>
           </ul>
         </div>
 
@@ -151,7 +164,7 @@
 
             <!--
             <div class="col-xs-12">
-              <a href="https://www.redhat.com/en/global/czech-republic" alt="Red Hat, Czech"><img src="img/logo_redhat_rgb_default_brought_to_you_by.png"></a>
+              <a href="https://www.redhat.com/en/global/czech-republic"><img alt="Red Hat, Czech" src="img/logo_redhat_rgb_default_brought_to_you_by.png"></a>
             </div>
             -->
           </div>
@@ -176,7 +189,7 @@
               <li>An IT student or a teacher from an IT university/faculty</li>
               <li>Or simply an IT enthusiast interested in the latest trends in open source and emerging digital technologies</li>
             </ul>
-            <p>If you're curious about last year's event, you can check out <a href="https://devconfcz2016.sched.org/" alt="DevConf.cz 2016 Schedule">DevConf.cz 2016 schedule</a> and videos on our <a href="https://www.youtube.com/channel/UCIHsqY_4eWeInVQnxZ7WSjg">DevConf.cz YouTube Channel</a>.</p>
+            <p>If you're curious about last year's event, you can check out <a href="https://devconfcz2016.sched.org/">DevConf.cz 2016 schedule</a> and videos on our <a href="https://www.youtube.com/channel/UCIHsqY_4eWeInVQnxZ7WSjg">DevConf.cz YouTube Channel</a>.</p>
             <p>DevConf.cz is a free conference and there is no admission or ticket charge. This year we will require that you <b>register for free</b>. We will provide registration details soon.</p>
             <p>Talks, presentations, and workshops will all be in <i>English</i>.</p>
           </div>
@@ -402,7 +415,9 @@
         <div class="row">
           <div class="col-sm-12 col-md-6">
             <h3>Need help?</h3>
-            <h4>Find us on Telegram or Email us:</h4><a href="https://telegram.me/joinchat/B1He_UEkuB4fBfY1cKCXRw"><img src="img/telegram_logo-128x-128y.png"></a> <a href="mailto:cward@redhat.com"><img src="img/mail_icon.png"></a>
+            <h4>Find us on Telegram or Email us:</h4>
+            <a href="https://telegram.me/joinchat/B1He_UEkuB4fBfY1cKCXRw"><img src="img/telegram_logo-128x-128y.png" alt="Join DevConf chat on Telegram"></a>
+            <a href="mailto:cward@redhat.com"><img src="img/mail_icon.png" alt="Email Chris Ward about DevConf"></a>
           </div>
           <div class="col-sm-12 col-md-6">
             <h3>FAQ</h3>
@@ -423,7 +438,7 @@
         <h3>This event is brought to you by:</h3>
         <div class="row">
           <div class="col-lg-12">
-            <a href="https://www.redhat.com/en/global/czech-republic" alt="Red Hat, Czech"><img src="img/logo_redhat_rgb_default.png"></a>
+            <a href="https://www.redhat.com/en/global/czech-republic"><img alt="Red Hat, Czech" src="img/logo_redhat_rgb_default.png"></a>
           </div>
         </div>
         <div class="row">
@@ -431,11 +446,11 @@
             <h4>And supported by our friends at:</h4>
           </div>
           <div class="col-lg-4">
-            <a href="https://mojefedora.cz" alt="Moje Fedora CZ"><img src="img/cropped-mojefedora-250x-150y.png"></a>
+            <a href="https://mojefedora.cz"><img alt="Moje Fedora CZ" src="img/cropped-mojefedora-250x-150y.png"></a>
           </div>
           <div class="col-lg-4 hidden-xs hidden-sm"></div>
           <div class="col-lg-4">
-            <a href="http://www.fit.vutbr.cz/" alt="FIT VUT Brno Faculty of Information Technology"><img src="img/fit_vut_brno_logo-250x-150y.png"></a>
+            <a href="http://www.fit.vutbr.cz/"><img alt="FIT VUT Brno Faculty of Information Technology" src="img/fit_vut_brno_logo-250x-150y.png"></a>
           </div>
         </div>
       </div>
