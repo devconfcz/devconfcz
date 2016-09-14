@@ -7,6 +7,9 @@
     max-width: 100%;
     background: #000;
     margin: 5px;
+    background-image: url('../img/vidthumb.jpg');
+    cursor: pointer;
+    background-size: 100% 100%;
 }
 
 .youtube-player iframe {
@@ -50,15 +53,4 @@
     margin-top: -36px;
     position: absolute;
     cursor: pointer;
-}
-
-.youtube-player .play:before {
-  position:absolute;
-  font-family: FontAwesome;
-  font-size: 48px;
-  color: #563d7c;
-  top:0;
-  left:0;
-  margin-right: 5px;
-  content: "\f16a";
 }
