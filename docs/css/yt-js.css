@@ -44,13 +44,20 @@
     -webkit-filter: brightness(75%);
 }
 
+.youtube-player:hover .play {
+    color: #8786df;
+}
+
 .youtube-player .play {
-    height: 72px;
-    width: 72px;
+    height: 100px;
+    width: 100px;
     left: 50%;
     top: 50%;
-    margin-left: -36px;
-    margin-top: -36px;
+    margin-left: -50px;
+    margin-top: -75px;
     position: absolute;
     cursor: pointer;
+    font-size: 100px;
+    color: white;
+    z-index: 999;
 }
