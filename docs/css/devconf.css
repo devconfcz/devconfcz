@@ -21,6 +21,10 @@ a:visited {
   color: #8786df;
 }
 
+.smaller {
+  font-size: .8em;
+}
+
 .btn {
   user-select: none;
   -moz-user-select: none;
@@ -73,6 +77,10 @@ a:visited {
 
 .white {
   color: #fff
+}
+
+.purple {
+  color: #8786df;
 }
 
 .tagline {
@@ -138,6 +146,14 @@ h3.first {
   padding-top: 0;
 }
 
+.coc-section {
+  padding-top: 100px;
+}
+
+.coc-section .logo {
+  text-align: center;
+}
+
 .intro-section {
   overflow: hidden;
   text-align: center;
@@ -149,7 +165,7 @@ h3.first {
 }
 
 .logo img {
-  max-width: 100%;
+  max-width: 90%;
   height: auto;
 }
 
