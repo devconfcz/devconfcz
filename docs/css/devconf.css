@@ -21,18 +21,42 @@ a:visited {
   color: #8786df;
 }
 
+.btn {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  background-clip: padding-box;
+}
+
 .btn-purple {
+  transition: all 0.1s;
+  position: relative;
   background-color: hsl(299, 29%, 29%) !important;
+  background-image: linear-gradient(#a096e8, #8e83e4 20%, #8f83e4 60%, #7a70ca 150%);
   background-repeat: repeat-x;
-  background-image: linear-gradient(#8e83e4, #6258a7);
-  border-color: #5e345f #5e345f hsl(299, 29%, 19.5%);
+  border-color: #39345f;
+  box-shadow: 0 1px #6157b4, 0 6px 0 #5348a7, 2px 9px 12px #ddd, 0 1px #c1bbf0 inset;
   color: #fff !important;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.62);
-  -webkit-font-smoothing: antialiased;
   font-size: 1.2em;
   font-weight: bold;
   line-height: 1;
   padding: 0.75ex 2ex;
+  text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.4);
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn-purple:hover {
+  background-image: linear-gradient(#aba2eb, #998fe8 25%, #998fe8 60%, #867cd1 170%);
+  border-color: #413b6a;
+  box-shadow: 0 1px #675cbb, 0 6px 0 #5c51b2, 2px 9px 12px #ddd, 0 1px #c7c2f2 inset;
+}
+
+.btn-purple:active {
+  background-image: linear-gradient(#6258a7,#8e83e4 150%);
+  box-shadow: none;
+  margin-bottom: -9px;
+  margin-top: 9px;
 }
 
 .btn-orange {
