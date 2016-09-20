@@ -173,15 +173,7 @@
             <div class="submit-talk">
               <a class="typeform-share btn btn-purple" href="https://devconfcz.typeform.com/to/SB4LW3" data-mode="1" target="_blank">SUBMIT A TALK</a>
             </div>
-            <script>
-              (function(){var qs,js,q,s,d=document,gi=d.getElementById,ce=d.createElement,gt=d.getElementsByTagName,id='typef_orm',b='https://s3-eu-west-1.amazonaws.com/share.typeform.com/';if(!gi.call(d,id)){js=ce.call(d,'script');js.id=id;js.src=b+'share.js';q=gt.call(d,'script')[0];q.parentNode.insertBefore(js,q)}id=id+'_';if(!gi.call(d,id)){qs=ce.call(d,'link');qs.rel='stylesheet';qs.id=id;qs.href=b+'share-button.css';s=gt.call(d,'head')[0];s.appendChild(qs,s)}})()
-            </script>
 
-            <!--
-            <div class="col-xs-12">
-              <a href="https://www.redhat.com/en/global/czech-republic"><img alt="Red Hat, Czech" src="img/logo_redhat_rgb_default_brought_to_you_by.png"></a>
-            </div>
-            -->
           </div>
         </div>
       </div>
@@ -457,6 +449,25 @@
             </ul> -->
           </div>
         </div>
+		
+        <div class="row">
+			<form id="newsletter" method="post" action="https://tinyletter.com/devconf_cz">
+			  <div class="row padding-top-lg">
+				<div class="col-md-4 col-md-offset-2 col-xs-6">
+				  <div class="form-group">
+					<input name="email" type="email" class="form-control" id="email" placeholder="Enter your email address&hellip;" required>
+				  </div>
+				</div>
+				<div class="col-md-6 col-xs-6">
+				  <button type="submit" class="btn btn-success"
+					  data-toggle="popover" data-trigger="hover" data-placement="top" title="Stay up to date with DevConf.cz"
+					  data-content="We'll send you updates and announcements related to on-going and future DevConf.cz events and other stuff we're working on.">
+					Subscribe to DevConf.cz Updates&nbsp;&nbsp;<i class="fa fa-envelope" aria-hidden="true"></i>
+				  </button>
+				</div>
+			  </div>
+			</form>
+        </div>
       </div>
     </section>
 
@@ -490,6 +501,10 @@
         <!-- EMPTY -->
       </div>
     </footer>
+
+    <script>
+      (function(){var qs,js,q,s,d=document,gi=d.getElementById,ce=d.createElement,gt=d.getElementsByTagName,id='typef_orm',b='https://s3-eu-west-1.amazonaws.com/share.typeform.com/';if(!gi.call(d,id)){js=ce.call(d,'script');js.id=id;js.src=b+'share.js';q=gt.call(d,'script')[0];q.parentNode.insertBefore(js,q)}id=id+'_';if(!gi.call(d,id)){qs=ce.call(d,'link');qs.rel='stylesheet';qs.id=id;qs.href=b+'share-button.css';s=gt.call(d,'head')[0];s.appendChild(qs,s)}})()
+    </script>
 
   </body>
 </html>

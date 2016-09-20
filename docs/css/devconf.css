@@ -21,6 +21,10 @@ a:visited {
   color: #8786df;
 }
 
+.padding-top-lg {
+  padding-top: 5em; 
+}
+
 .smaller {
   font-size: .8em;
 }
