@@ -25,6 +25,10 @@ a:visited {
   padding-top: 5em; 
 }
 
+.xs-smaller {
+  font-size: .6em;
+}
+
 .smaller {
   font-size: .8em;
 }
