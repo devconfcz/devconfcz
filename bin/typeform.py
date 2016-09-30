@@ -12,18 +12,26 @@ Installation (Python 3)
 
 Example Config
 --------------
-cat <<EOT >> ~/.config/typeform/config.json
-{
-    "url": "https://api.typeform.com/v1/form/SB4LW3",
-    "params": {
-        "key": "HIDDEN_KEY",
-        "completed": "true"
+    cat <<EOT >> ~/.config/typeform/config.json
+    {
+        "url": "https://api.typeform.com/v1/form/SB4LW3",
+        "params": {
+            "key": "HIDDEN_KEY",
+            "completed": "true"
+        }
     }
-}
+
+Usage
+-----
+    ./typeform.py count [sessions]
+    ./typeform.py count speakers
+    
+
 EOT
 
 """
 
+from collections import defaultdict
 import datetime
 import json
 import os
@@ -44,40 +52,40 @@ params = config['params']
 
 ## Set-Up some CONSTANTS
 QUESTION_ALIAS = {
-    'Speaker Agreement': 'Agreement',
-    'Session Title': 'Title',
-    'Session Type': 'Type',
-    'Session Theme': 'Theme',
-    'Session Difficulty': 'Difficulty',
-    'Session Abstract / Description': 'Abstract',
-    'What\'s the primary speakers name?': 'Name',
-    'Where is the primary speaker traveling from?': 'Country',
-    'Primary speakers background / bio?': 'Bio',
-    'Primary Speaker\'s Organizational Affiliation': 'Org',
-    'Primary Speakers wearables size?': 'Size',
-    'Primary speaker\'s email address?': 'Email',
-    'Link to primary speaker\'s \xa0Avatar / Profile Pic': 'Avatar',
-    'Primary Speaker\'s Twitter handle?': 'Twitter',
-    'Secondary Speaker Info': 'Secondary',
+    'Speaker Agreement': 'agreement',
+    'Session Title': 'title',
+    'Session Type': 'type',
+    'Session Theme': 'theme',
+    'Session Difficulty': 'difficulty',
+    'Session Abstract / Description': 'abstract',
+    'What\'s the primary speakers name?': 'name',
+    'Where is the primary speaker traveling from?': 'country',
+    'Primary speakers background / bio?': 'bio',
+    'Primary Speaker\'s Organizational Affiliation': 'org',
+    'Primary Speakers wearables size?': 'size',
+    'Primary speaker\'s email address?': 'email',
+    'Link to primary speaker\'s \xa0Avatar / Profile Pic': 'avatar',
+    'Primary Speaker\'s Twitter handle?': 'twitter',
+    'Secondary Speaker Info': 'secondary',
 }
 
-SPEAKER_FIELDS = ['Agreement', 'Name', 'Country', 'Bio', 'Org', 'Size',
-                  'Email', 'Avatar', 'Twitter', 'Secondary']
+SPEAKER_FIELDS = ['agreement', 'name', 'country', 'bio', 'org', 'size',
+                  'email', 'avatar', 'twitter', 'secondary']
 
-SESSION_FIELDS = ['Title', 'Type', 'Theme', 'Difficulty', 'Abstract']
+SESSION_FIELDS = ['title', 'type', 'theme', 'difficulty', 'abstract']
 
 DEFAULT_SAVE_PATH = './proposals.json'
 
 
 ## Shared Functions
 
-def __get_speaker(name, twitter):
-    twitter = (twitter or "")  # makes sure we're working with a string
-    twitter = twitter.lstrip('@')  # clear any existing @ if present
-    twitter = twitter.split('/')[-1]  # grab handle only in case of https://...
-    if twitter and len(twitter) > 1:
-        name += ' (@{})'.format(twitter)
-    return name
+def _clean_twitter(handle):
+    handle = str(handle or "")  # makes sure we're working with a string
+    handle = handle.lstrip('@')  # clear any existing @ if present
+    handle = handle.split('/')[-1]  # grab handle only in case of https://...
+    # assume 1c handles are invalid
+    handle = handle if len(handle) > 1 else ""  
+    return handle
 
 
 def _get_json(url, params):
@@ -99,11 +107,12 @@ def _get_json(url, params):
         # Grab the date the form was submitted
         dt = response['metadata']['date_submit']
         # dt = datetime.datetime.strptime(dt, '%y-%m-%d %H:%M:%S')
+        _id = (response['metadata']['network_id'] + '+' + dt).replace(' ', '')
 
         # Save the submission date
-        proposal = {'Submitted': dt}
+        proposal = {'_id': _id, 'submitted': dt}
         # Gonna aggregate multiple themes into a single list
-        proposal['Theme'] = []
+        proposal['theme'] = []
 
         for field, value in answers.items():
             value = value.strip()
@@ -112,22 +121,25 @@ def _get_json(url, params):
             # Swap it with the simplified field alias for dict keys
             alias = QUESTION_ALIAS[_field]
 
-            if alias == 'Theme':
+            if alias == 'theme':
                 proposal[alias].append(value)
+            elif alias == 'twitter':
+                value = _clean_twitter(value)
+                proposal[alias] = value
             else:
                 proposal[alias] = value
 
         else:
-            proposal['Theme'] = sorted(proposal['Theme'])
+            proposal['theme'] = sorted(proposal['theme'])
             proposals.append(proposal)
 
     # Reverse Sort by date submitted
-    proposals = sorted(proposals, key=lambda x: x['Submitted'], reverse=True)
+    proposals = sorted(proposals, key=lambda x: x['submitted'], reverse=True)
 
     return proposals
 
 
-def __convert_datetime(dt):
+def _convert_datetime(dt):
     dt_format = '%Y-%m-%d'
 
     if dt == 'today':
@@ -140,25 +152,88 @@ def __convert_datetime(dt):
 
     return int(epoch)
 
+def _show_stats(obj):
+    """ Calculate and show some basic resource stats """
+    # Speakers and Sessions: Total
+    # Speakers: 
+    # * unique: org, country
+    # Sessions:
+    # * unique: type, theme, difficulty
 
-def _echo_stdout(proposals, with_abstract):
-    """Download and echo the form responses Human Readable form to STDOUT"""
+    stats = {}
+    template = """Sessions"""
+
+    keys = {
+        "sessions": ['type', 'theme', 'difficulty'],
+        "speakers": ['org', 'country'],
+    }
+
+    stats['speakers'] = defaultdict(list)
+    stats['sessions'] = defaultdict(list)
+    for resource_type in ['speakers', 'sessions']:
+        for resource in obj[resource_type]:
+            for key in keys[resource_type]:
+                stats[resource_type][key].append(
+                    resource.get(key, 'UNKNOWN'))
+        
+        
+
+
+def _show_resources(proposals, summary):
+    """Echo form responses Human Readable form to STDOUT"""
     template = """
-Speaker:    {Speaker}
-Submitted:  {Submitted}
-Title:      {Title}
-Type:       {Type}
-Theme:      {Theme}
-Difficulty: {Difficulty}""".strip()
+Title:      {title}
+Speaker:    {speaker}
+Email:      {email}
+Type:       {type}
+Theme:      {theme}
+Difficulty: {difficulty}
+Submitted:  {submitted}
+""".strip()
 
-    if with_abstract:
-        template += """\nAbstract:\n\n{Abstract}"""
+    if not summary:
+        template += """\nAbstract:\n\n{abstract}"""
 
-    template += "\n" + "-" * 79 + "\n"
+    template += "\n\n" + "-" * 79 + "\n"
 
     for proposal in proposals:
-        speaker = __get_speaker(proposal['Name'], proposal.get('Twitter'))
-        click.echo(template.format(Speaker=speaker, **proposal))
+        speaker = proposal['name']
+        twitter = proposal.get('twitter')
+        if twitter and len(twitter) > 1:
+            speaker += ' (@{})'.format(twitter)
+        click.echo(template.format(speaker=speaker, **proposal))
+
+
+def _get_resources(resource, proposals):
+    if resource == "proposals":
+        return proposals  # return as-is
+    elif resource == "sessions":
+        keys = SESSION_FIELDS
+    elif resource == "speakers":
+        keys = SPEAKER_FIELDS
+    else:
+        raise ValueError("Invalid resource: {}".format(resource))
+
+    resources = []
+    for proposal in proposals:
+        _id = proposal['_id']
+        item = {'_id': _id}
+        secondary = {} 
+        for key in keys:
+            if key == 'secondary' and proposal.get(key):
+                # Secondary speakers are just blobs; need manual processing
+                secondary['_secondary'] = True
+                secondary['_id'] = _id
+                secondary['_raw'] = proposal.get(key)
+            else:
+                item[key] = proposal.get(key, None)
+
+        resources.append(item)
+
+        if secondary:
+            resources.append(secondary)
+
+    return resources
 
 
 ## CLI Set-up ##
@@ -167,44 +242,60 @@ Difficulty: {Difficulty}""".strip()
 @click.option('--since', default=None, help='Filter by submission date')
 @click.pass_context
 def cli(ctx, since):
-    """Download and save the form responses in JSON"""
+    """Download and prepare the form responses for further processing"""
 
     # Apply Filters
     if since:
         # convert to UNIX timestamp
-        since = __convert_datetime(since)
+        since = _convert_datetime(since)
         params['since'] = since
 
     proposals = _get_json(url, params)
+    sessions = _get_resources('sessions', proposals)
+    speakers = _get_resources('speakers', proposals)
 
-    # Pass along the proposals to the remaining commands
-    ctx.obj['proposals'] = proposals
+    ctx.obj['sessions'] = sessions
+    ctx.obj['speakers'] = speakers
 
 
 @cli.command()
 @click.option('--path', default=DEFAULT_SAVE_PATH, help='Output Path')
-@click.pass_context
-def save(ctx, path):
-    proposals = ctx.obj['proposals']
+@click.pass_obj
+def save(obj, path):
+    proposals = obj['proposals']
     f = open(path, 'w')
     json.dump(proposals, f, sort_keys=True, indent=2, separators=(',', ': '))
 
 
 @cli.command()
-@click.option('--with-abstract', default=False, is_flag=True,
-              help='Filter by submission date')
-@click.pass_context
-def show(ctx, with_abstract):
-    proposals = ctx.obj['proposals']
-    _echo_stdout(proposals, with_abstract)
+@click.argument('resource', default='sessions', 
+                type=click.Choice(['sessions', 'speakers', 'proposals']))
+@click.option('--summary', default=False, is_flag=True,
+              help='Show only short summary of data')
+@click.pass_obj
+def show(obj, resource, summary):
+    resources = obj[resource]
+    _show_resources(resources, summary)
 
 
 @cli.command()
-@click.pass_context
-def count(ctx):
-    proposals = ctx.obj['proposals']
+@click.argument('resource', default='sessions', 
+                type=click.Choice(['sessions', 'speakers', 'proposals']))
+@click.pass_obj
+def count(obj, resource):
+    resources = obj[resource]
+    click.echo(len(resources))
 
-    click.echo(len(proposals))
+
+@cli.command()
+@click.pass_obj
+def stats(obj):
+    _show_stats(obj)
+
+
+# TODO
+# cache results
+# cache avatars
 
 
 if __name__ == '__main__':
