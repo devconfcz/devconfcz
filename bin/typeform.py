@@ -31,7 +31,7 @@ EOT
 
 """
 
-from collections import defaultdict
+from collections import defaultdict, Counter
 import datetime
 import json
 import os
@@ -152,6 +152,22 @@ def _convert_datetime(dt):
 
     return int(epoch)
 
+
+def _csvify(stats):
+    # take some items, which include their counts
+    # return back a list of item strings which include the label + counts
+
+    _stats = []
+    for resource in stats:
+        for key, value in stats[resource].items():
+            stat_str = ", ".join((resource, key, '-', str(len(set(value.keys())))))
+            _stats.append(stat_str)
+            for stat, k in value.items():
+                stat_str = ", ".join([str(x) for x in (resource, key, stat, k)])
+                _stats.append(stat_str)
+    return _stats
+
+
 def _show_stats(obj):
     """ Calculate and show some basic resource stats """
     # Speakers and Sessions: Total
@@ -161,21 +177,28 @@ def _show_stats(obj):
     # * unique: type, theme, difficulty
 
     stats = {}
-    template = """Sessions"""
+    template = """Sessions\n========"""
 
     keys = {
         "sessions": ['type', 'theme', 'difficulty'],
         "speakers": ['org', 'country'],
     }
 
-    stats['speakers'] = defaultdict(list)
-    stats['sessions'] = defaultdict(list)
     for resource_type in ['speakers', 'sessions']:
+        stats[resource_type] = defaultdict(dict)
         for resource in obj[resource_type]:
             for key in keys[resource_type]:
-                stats[resource_type][key].append(
-                    resource.get(key, 'UNKNOWN'))
-        
+                if not stats[resource_type].get(key):
+                    stats[resource_type][key] = defaultdict(int)
+                value = resource.get(key, 'UNKNOWN')
+                if not isinstance(value, list):
+                    value = [value]
+                for _v in value:
+                    stats[resource_type][key][_v] += 1
+
+    stats = _csvify(stats)
+
+    print('\n'.join(stats))
         
 
 
