@@ -7,7 +7,7 @@ Installation (Python 3)
 
     virtualenv -p python3 ~/virtenvs/devconfcz/
     source ~/virtenvs/devconfcz/bin/activate
-    pip install hyde requests click
+    pip install hyde requests click pandas df2gspread
 
 
 Example Config
@@ -35,10 +35,14 @@ from collections import defaultdict, Counter
 import datetime
 import json
 import os
+import re
 import requests
+import shutil
+import subprocess
 import time
 
 import click  # http://click.pocoo.org/6/
+import pandas as pd
 
 
 ## LOAD CONFIG FILE ##
@@ -69,12 +73,11 @@ QUESTION_ALIAS = {
     'Secondary Speaker Info': 'secondary',
 }
 
-SPEAKER_FIELDS = ['agreement', 'name', 'country', 'bio', 'org', 'size',
+SPEAKER_FIELDS = ['name', 'country', 'bio', 'org', 'size',
                   'email', 'avatar', 'twitter', 'secondary']
 
-SESSION_FIELDS = ['title', 'type', 'theme', 'difficulty', 'abstract']
-
-DEFAULT_SAVE_PATH = './proposals.json'
+SESSION_FIELDS = ['submitted', 'title', 'type', 'theme', 'difficulty', 
+                  'abstract']
 
 
 ## Shared Functions
@@ -88,7 +91,7 @@ def _clean_twitter(handle):
     return handle
 
 
-def _get_json(url, params):
+def _get_data(url, params):
     ## Set-up Working Variables ##
     r = requests.get(url, params=params)
     results = r.json()
@@ -105,9 +108,9 @@ def _get_json(url, params):
         # These are the actual form responses
         answers = response['answers']
         # Grab the date the form was submitted
-        dt = response['metadata']['date_submit']
-        # dt = datetime.datetime.strptime(dt, '%y-%m-%d %H:%M:%S')
-        _id = (response['metadata']['network_id'] + '+' + dt).replace(' ', '')
+        dt_str = response['metadata']['date_submit']
+        dt = datetime.datetime.strptime(dt_str, '%Y-%m-%d %H:%M:%S')
+        _id = (response['metadata']['network_id'] + '+' + dt_str).replace(' ', '')
 
         # Save the submission date
         proposal = {'_id': _id, 'submitted': dt}
@@ -130,12 +133,13 @@ def _get_json(url, params):
                 proposal[alias] = value
 
         else:
-            proposal['theme'] = sorted(proposal['theme'])
+            proposal['theme'] = '; '.join(sorted(proposal['theme']))
             proposals.append(proposal)
 
     # Reverse Sort by date submitted
-    proposals = sorted(proposals, key=lambda x: x['submitted'], reverse=True)
-
+    proposals = pd.DataFrame(proposals).fillna("UNKNOWN")
+    # reorder the colomns
+    proposals = proposals[SESSION_FIELDS + SPEAKER_FIELDS]
     return proposals
 
 
@@ -153,110 +157,42 @@ def _convert_datetime(dt):
     return int(epoch)
 
 
-def _csvify(stats):
-    # take some items, which include their counts
-    # return back a list of item strings which include the label + counts
-
-    _stats = []
-    for resource in stats:
-        for key, value in stats[resource].items():
-            stat_str = ", ".join((resource, key, '-', str(len(set(value.keys())))))
-            _stats.append(stat_str)
-            for stat, k in value.items():
-                stat_str = ", ".join([str(x) for x in (resource, key, stat, k)])
-                _stats.append(stat_str)
-    return _stats
+def _split_resources(proposals):
+    # split out proposals into speakers and sessions
+    sessions = proposals[SESSION_FIELDS]
+    speakers = proposals[SPEAKER_FIELDS]
+    return sessions, speakers 
 
 
-def _show_stats(obj):
-    """ Calculate and show some basic resource stats """
-    # Speakers and Sessions: Total
-    # Speakers: 
-    # * unique: org, country
-    # Sessions:
-    # * unique: type, theme, difficulty
+def _download(url, path):
+    from io import open as iopen
 
-    stats = {}
-    template = """Sessions\n========"""
+    try:
+        i = requests.get(url)
+        if i.status_code == requests.codes.ok:
+            with iopen(path, 'wb') as file:
+                file.write(i.content)
 
-    keys = {
-        "sessions": ['type', 'theme', 'difficulty'],
-        "speakers": ['org', 'country'],
-    }
+        cmd = "file {}".format(path)
+        process = subprocess.Popen(cmd.split(), stdout=subprocess.PIPE)
+        output, error = process.communicate()
 
-    for resource_type in ['speakers', 'sessions']:
-        stats[resource_type] = defaultdict(dict)
-        for resource in obj[resource_type]:
-            for key in keys[resource_type]:
-                if not stats[resource_type].get(key):
-                    stats[resource_type][key] = defaultdict(int)
-                value = resource.get(key, 'UNKNOWN')
-                if not isinstance(value, list):
-                    value = [value]
-                for _v in value:
-                    stats[resource_type][key][_v] += 1
-
-    stats = _csvify(stats)
-
-    print('\n'.join(stats))
-        
-
-
-def _show_resources(proposals, summary):
-    """Echo form responses Human Readable form to STDOUT"""
-    template = """
-Title:      {title}
-Speaker:    {speaker}
-Email:      {email}
-Type:       {type}
-Theme:      {theme}
-Difficulty: {difficulty}
-Submitted:  {submitted}
-""".strip()
-
-    if not summary:
-        template += """\nAbstract:\n\n{abstract}"""
-
-    template += "\n\n" + "-" * 79 + "\n"
-
-    for proposal in proposals:
-        speaker = proposal['name']
-        twitter = proposal.get('twitter')
-        if twitter and len(twitter) > 1:
-            speaker += ' (@{})'.format(twitter)
-        click.echo(template.format(speaker=speaker, **proposal))
-
-
-def _get_resources(resource, proposals):
-    if resource == "proposals":
-        return proposals  # return as-is
-    elif resource == "sessions":
-        keys = SESSION_FIELDS
-    elif resource == "speakers":
-        keys = SPEAKER_FIELDS
-    else:
-        raise ValueError("Invalid resource: {}".format(resource))
-
-    resources = []
-    for proposal in proposals:
-        _id = proposal['_id']
-        item = {'_id': _id}
-        secondary = {} 
-        for key in keys:
-            if key == 'secondary' and proposal.get(key):
-                # Secondary speakers are just blobs; need manual processing
-                secondary['_secondary'] = True
-                secondary['_id'] = _id
-                secondary['_raw'] = proposal.get(key)
-            else:
-                item[key] = proposal.get(key, None)
-
-        resources.append(item)
-
-        if secondary:
-            resources.append(secondary)
-
-    return resources
+        output = str(output)
+        if re.search(r'PNG image', output):
+            ext = '.png'
+        elif re.search(r'JPEG image', output):
+            ext = '.jpg'
+        else:
+            raise ValueError("Invalid image ({})".format(output))
+        _path = path + ext
+        os.rename(path, _path)
+    except Exception as e:
+        if os.path.exists(path):
+            os.remove(path)
+        print("ERROR: {})\n".format(e))
+        url = "http://placehold.it/300x300"
+        path = path.split('.')[:-1] + '.png'
+        _download(url, path)
 
 
 ## CLI Set-up ##
@@ -273,32 +209,40 @@ def cli(ctx, since):
         since = _convert_datetime(since)
         params['since'] = since
 
-    proposals = _get_json(url, params)
-    sessions = _get_resources('sessions', proposals)
-    speakers = _get_resources('speakers', proposals)
+    proposals = _get_data(url, params)
+    sessions, speakers = _split_resources(proposals)
 
+    ctx.obj['proposals'] = proposals
     ctx.obj['sessions'] = sessions
     ctx.obj['speakers'] = speakers
 
 
 @cli.command()
-@click.option('--path', default=DEFAULT_SAVE_PATH, help='Output Path')
+@click.option('--csv', default=False, is_flag=True)
+@click.option('--upload', default=False, is_flag=True,
+              help='Save remotely to gspreadsheet?')
+@click.option('--html', default=False, is_flag=True)
+@click.option('--outdir', help='Output directory')
 @click.pass_obj
-def save(obj, path):
+def save(obj, csv, upload, html, outdir):
     proposals = obj['proposals']
-    f = open(path, 'w')
-    json.dump(proposals, f, sort_keys=True, indent=2, separators=(',', ': '))
+    if not (csv or upload or html):
+        csv = True
 
+    if csv:
+        outdir = outdir or './'
+        path = os.path.join(outdir, "devconfcz_proposals.csv")
+        f = open(path, 'w')
+        proposals.to_csv(f)
 
-@cli.command()
-@click.argument('resource', default='sessions', 
-                type=click.Choice(['sessions', 'speakers', 'proposals']))
-@click.option('--summary', default=False, is_flag=True,
-              help='Show only short summary of data')
-@click.pass_obj
-def show(obj, resource, summary):
-    resources = obj[resource]
-    _show_resources(resources, summary)
+    if upload:
+        path = path or 'devconfcz_proposals'
+        from df2gspread import df2gspread as d2g
+        wks = 'As of ' + str(datetime.date.today())
+        d2g.upload(proposals, path, wks)
+
+    if html:
+        print(proposals.style.render())
 
 
 @cli.command()
@@ -311,10 +255,21 @@ def count(obj, resource):
 
 
 @cli.command()
+@click.option('--path', help='Output Path')
 @click.pass_obj
-def stats(obj):
-    _show_stats(obj)
+def avatars(obj, path):
+    path = os.path.expanduser(path or "/tmp/avatars")
 
+    if not os.path.exists(path):
+        os.makedirs(path)
+
+    for row in obj['speakers'][['email', 'avatar']].itertuples():
+        email, url = row.email.replace('@', '__at__'), row.avatar
+        print("Loading {} ".format(url), end="", flush=True)
+        filename = email
+        _path = os.path.join(path, filename)
+        print("as {} ".format(filename))
+        _download(url, _path)
 
 # TODO
 # cache results
