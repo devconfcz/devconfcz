@@ -25,7 +25,7 @@ Usage
 -----
     ./typeform.py count [sessions]
     ./typeform.py count speakers
-    
+
 
 EOT
 
@@ -76,7 +76,7 @@ QUESTION_ALIAS = {
 SPEAKER_FIELDS = ['name', 'country', 'bio', 'org', 'size',
                   'email', 'avatar', 'twitter', 'secondary']
 
-SESSION_FIELDS = ['submitted', 'title', 'type', 'theme', 'difficulty', 
+SESSION_FIELDS = ['submitted', 'title', 'type', 'theme', 'difficulty',
                   'abstract']
 
 
@@ -87,7 +87,7 @@ def _clean_twitter(handle):
     handle = handle.lstrip('@')  # clear any existing @ if present
     handle = handle.split('/')[-1]  # grab handle only in case of https://...
     # assume 1c handles are invalid
-    handle = handle if len(handle) > 1 else ""  
+    handle = handle if len(handle) > 1 else ""
     return handle
 
 
@@ -110,7 +110,8 @@ def _get_data(url, params):
         # Grab the date the form was submitted
         dt_str = response['metadata']['date_submit']
         dt = datetime.datetime.strptime(dt_str, '%Y-%m-%d %H:%M:%S')
-        _id = (response['metadata']['network_id'] + '+' + dt_str).replace(' ', '')
+        _id = (
+            response['metadata']['network_id'] + '+' + dt_str).replace(' ', '')
 
         # Save the submission date
         proposal = {'_id': _id, 'submitted': dt}
@@ -161,7 +162,7 @@ def _split_resources(proposals):
     # split out proposals into speakers and sessions
     sessions = proposals[SESSION_FIELDS]
     speakers = proposals[SPEAKER_FIELDS]
-    return sessions, speakers 
+    return sessions, speakers
 
 
 def _download(url, path):
@@ -222,23 +223,23 @@ def cli(ctx, since):
 @click.option('--upload', default=False, is_flag=True,
               help='Save remotely to gspreadsheet?')
 @click.option('--html', default=False, is_flag=True)
-@click.option('--outdir', help='Output directory')
+@click.option('--path', help='Output directory')
 @click.pass_obj
-def save(obj, csv, upload, html, outdir):
+def save(obj, csv, upload, html, path):
     proposals = obj['proposals']
     if not (csv or upload or html):
         csv = True
 
     if csv:
-        outdir = outdir or './'
-        path = os.path.join(outdir, "devconfcz_proposals.csv")
+        path = path or './'
+        path = os.path.join(path, "devconfcz_proposals.csv")
         f = open(path, 'w')
         proposals.to_csv(f)
 
     if upload:
         path = path or 'devconfcz_proposals'
         from df2gspread import df2gspread as d2g
-        wks = 'As of ' + str(datetime.date.today())
+        wks = 'Submissions'  # "update" the existing sheet
         d2g.upload(proposals, path, wks)
 
     if html:
@@ -246,7 +247,7 @@ def save(obj, csv, upload, html, outdir):
 
 
 @cli.command()
-@click.argument('resource', default='sessions', 
+@click.argument('resource', default='sessions',
                 type=click.Choice(['sessions', 'speakers', 'proposals']))
 @click.pass_obj
 def count(obj, resource):
@@ -265,7 +266,7 @@ def avatars(obj, path):
 
     for row in obj['speakers'][['email', 'avatar']].itertuples():
         email, url = row.email.replace('@', '__at__'), row.avatar
-        print("Loading {} ".format(url), end="", flush=True)
+        print("Loading {} ".format(url), end="", flush=True)  # NOQA
         filename = email
         _path = os.path.join(path, filename)
         print("as {} ".format(filename))
