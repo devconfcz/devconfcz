@@ -316,17 +316,27 @@ def avatars(obj, path):
 
 
 @cli.command()
+@click.argument('cmd', default='theme',
+                type=click.Choice(['theme', 'difficulty', 'country',
+                                   'org', 'name']))
 @click.pass_obj
-def themes(obj):
+def report(obj, cmd):
     proposals = obj['proposals']
 
-    _types = proposals.theme
-    themes = []
-    _types.apply(lambda x: themes.extend(x.split('; ')))
-    themes = dict(Counter(themes))
+    stuff = []
+    if cmd == 'theme':
+        _types = proposals.theme
+        _types.apply(lambda x: stuff.extend(x.split('; ')))
+    elif cmd in ['difficulty', 'country', 'org', 'name']:
+        _types = proposals[cmd]
+        _types.apply(lambda x: stuff.append(x))
+    else:
+        raise ValueError('Invalid command: {}'.format(cmd))
 
-    for k, v in sorted(themes.items(), key=lambda x: x[1], reverse=True):
-        print("{:<30}: {}".format(k, v))
+    stuff = dict(Counter(stuff))
+
+    for k, v in sorted(stuff.items(), key=lambda x: x[1], reverse=True):
+        print("{:<40}: {}".format(k[:40], v))
 
 
 if __name__ == '__main__':
