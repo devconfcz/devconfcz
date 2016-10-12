@@ -42,6 +42,7 @@ import subprocess
 import time
 
 import click  # http://click.pocoo.org/6/
+from df2gspread import df2gspread as d2g
 import pandas as pd
 
 
@@ -196,6 +197,37 @@ def _download(url, path):
         _download(url, path)
 
 
+def _diff_submissions(path, wks_name, proposals):
+    # access credentials
+    credentials = d2g.get_credentials()
+    # auth for gspread
+    gc = d2g.gspread.authorize(credentials)
+
+    try:
+        # if gfile is file_id
+        gc.open_by_key(path)
+        gfile_id = path
+    except Exception:
+        # else look for file_id in drive
+        gfile_id = get_file_id(credentials, path, write_access=True)
+
+    wks = d2g.get_worksheet(gc, gfile_id, wks_name, write_access=True)
+    rows = wks.get_all_values()
+    rows_k = len(rows)  # includes the header row already
+    if rows_k > 0:
+        columns = rows.pop(0)  # header
+        df = pd.DataFrame(rows, columns=columns)
+        start_cell = 'A' + str(rows_k + 1)
+        col_names = False
+        new_proposals = proposals[len(df.index):]
+        return start_cell, col_names, new_proposals
+    else:
+        # new sheet, nothing to do
+        start_cell = 'A1'
+        col_names = True
+        return start_cell, col_names, proposals
+
+
 ## CLI Set-up ##
 
 @click.group()
@@ -238,9 +270,19 @@ def save(obj, csv, upload, html, path):
 
     if upload:
         path = path or 'devconfcz_proposals'
-        from df2gspread import df2gspread as d2g
-        wks = 'Submissions'  # "update" the existing sheet
-        d2g.upload(proposals, path, wks)
+
+        wks = 'Submissions MASTER'  # "update" the existing sheet
+
+        # grab only the items we don't already have so we
+        # can APPEND them to the sheet rather than rewritting
+        # the whole sheet
+        start_cell, col_names, proposals = _diff_submissions(path, wks,
+                                                             proposals)
+        if not proposals.empty:
+            d2g.upload(proposals, path, wks, start_cell=start_cell,
+                       clean=False, col_names=col_names)
+        else:
+            print("No new proposals to upload... QUITTING!")
 
     if html:
         print(proposals.style.render())
