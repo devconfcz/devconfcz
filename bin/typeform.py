@@ -314,9 +314,19 @@ def avatars(obj, path):
         print("as {} ".format(filename))
         _download(url, _path)
 
-# TODO
-# cache results
-# cache avatars
+
+@cli.command()
+@click.pass_obj
+def themes(obj):
+    proposals = obj['proposals']
+
+    _types = proposals.theme
+    themes = []
+    _types.apply(lambda x: themes.extend(x.split('; ')))
+    themes = dict(Counter(themes))
+
+    for k, v in sorted(themes.items(), key=lambda x: x[1], reverse=True):
+        print("{:<30}: {}".format(k, v))
 
 
 if __name__ == '__main__':
