@@ -78,7 +78,7 @@ SPEAKER_FIELDS = ['name', 'country', 'bio', 'org', 'size',
                   'email', 'avatar', 'twitter', 'secondary']
 
 SESSION_FIELDS = ['submitted', 'title', 'type', 'theme', 'difficulty',
-                  'abstract']
+                  'abstract', 'duration']
 
 
 ## Shared Functions
@@ -131,6 +131,9 @@ def _get_data(url, params):
             elif alias == 'twitter':
                 value = _clean_twitter(value)
                 proposal[alias] = value
+            elif alias == 'type':
+                proposal[alias] = value
+                proposal['duration'] = _get_duration(value)
             else:
                 proposal[alias] = value
 
@@ -228,6 +231,10 @@ def _diff_submissions(path, wks_name, proposals):
         return start_cell, col_names, proposals
 
 
+def _get_duration(_type):
+    return int(_type.split(' ')[-1].split('+')[0].rstrip('m'))
+
+
 ## CLI Set-up ##
 
 @click.group()
@@ -318,16 +325,17 @@ def avatars(obj, path):
 @cli.command()
 @click.argument('cmd', default='theme',
                 type=click.Choice(['theme', 'difficulty', 'country',
-                                   'org', 'name']))
+                                   'org', 'name', 'type', 'title']))
+@click.option('--sort', default=1, help="Sort key")
 @click.pass_obj
-def report(obj, cmd):
+def report(obj, cmd, sort):
     proposals = obj['proposals']
 
     stuff = []
     if cmd == 'theme':
         _types = proposals.theme
         _types.apply(lambda x: stuff.extend(x.split('; ')))
-    elif cmd in ['difficulty', 'country', 'org', 'name']:
+    elif cmd in ['difficulty', 'country', 'org', 'name', 'type', 'title']:
         _types = proposals[cmd]
         _types.apply(lambda x: stuff.append(x))
     else:
@@ -335,9 +343,12 @@ def report(obj, cmd):
 
     stuff = dict(Counter(stuff))
 
-    for k, v in sorted(stuff.items(), key=lambda x: x[1], reverse=True):
+    for k, v in sorted(stuff.items(), key=lambda x: x[sort], reverse=True):
         print("{:<40}: {}".format(k[:40], v))
 
+    if cmd == 'type':
+        duration = int(proposals.duration.sum() / 60)
+        print("Total duration: ~{} hours".format(duration))
 
 if __name__ == '__main__':
     cli(obj={})
