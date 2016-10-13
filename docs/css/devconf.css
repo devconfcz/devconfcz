@@ -22,7 +22,7 @@ a:visited {
 }
 
 .padding-top-lg {
-  padding-top: 5em; 
+  padding-top: 5em;
 }
 
 .xs-smaller {
@@ -175,6 +175,10 @@ h3.first {
 .logo img {
   max-width: 90%;
   height: auto;
+}
+
+.logo-mobile {
+  padding-top: 15px;
 }
 
 .intro-content .logo {
