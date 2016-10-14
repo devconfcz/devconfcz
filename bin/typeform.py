@@ -78,7 +78,7 @@ SPEAKER_FIELDS = ['name', 'country', 'bio', 'org', 'size',
                   'email', 'avatar', 'twitter', 'secondary']
 
 SESSION_FIELDS = ['submitted', 'title', 'type', 'theme', 'difficulty',
-                  'abstract', 'duration']
+                  'abstract']
 
 
 ## Shared Functions
@@ -131,9 +131,6 @@ def _get_data(url, params):
             elif alias == 'twitter':
                 value = _clean_twitter(value)
                 proposal[alias] = value
-            elif alias == 'type':
-                proposal[alias] = value
-                proposal['duration'] = _get_duration(value)
             else:
                 proposal[alias] = value
 
@@ -216,15 +213,19 @@ def _diff_submissions(path, wks_name, proposals):
 
     wks = d2g.get_worksheet(gc, gfile_id, wks_name, write_access=True)
     rows = wks.get_all_values()
-    rows_k = len(rows)  # includes the header row already
-    if rows_k > 0:
+    try:
         columns = rows.pop(0)  # header
         df = pd.DataFrame(rows, columns=columns)
-        start_cell = 'A' + str(rows_k + 1)
+        df = df.drop(['', 'COMMENTS', 'VOTES', 'PROPOSED TRACK(S)'], axis=1)
+        df = df[df['title'] != '']  # filter out empty rows
+
+        rows_k = len(df)
+        start_cell = 'A' + str(rows_k + 2)
+
         col_names = False
         new_proposals = proposals[len(df.index):]
         return start_cell, col_names, new_proposals
-    else:
+    except Exception:
         # new sheet, nothing to do
         start_cell = 'A1'
         col_names = True
@@ -232,7 +233,11 @@ def _diff_submissions(path, wks_name, proposals):
 
 
 def _get_duration(_type):
-    return int(_type.split(' ')[-1].split('+')[0].rstrip('m'))
+    try:
+        return int(_type.split(' ')[-1].split('+')[0].rstrip('m'))
+    except ValueError:
+        # we have some custom type, ie "meetup"... assume  40 minute
+        return 40
 
 
 ## CLI Set-up ##
@@ -347,7 +352,11 @@ def report(obj, cmd, sort):
         print("{:<40}: {}".format(k[:40], v))
 
     if cmd == 'type':
-        duration = int(proposals.duration.sum() / 60)
+        duration = 0
+        for value in proposals['type']:
+            duration += _get_duration(value)
+        else:
+            duration = int(duration / 60)
         print("Total duration: ~{} hours".format(duration))
 
 if __name__ == '__main__':
