@@ -48,12 +48,14 @@ import pandas as pd
 
 ## LOAD CONFIG FILE ##
 
-base_path = os.path.expanduser("~/.config/typeform/")
-config_file = os.path.join(base_path, "config.json")
-config = json.load(open(config_file))
+BASE_PATH = os.path.expanduser("~/.config/typeform/")
+CONFIG_FILE = os.path.join(BASE_PATH, "config.json")
+config = json.load(open(CONFIG_FILE))
 url = config['url']
 params = config['params']
 
+LABEL_MAP_FILE = os.path.join(BASE_PATH, 'label_map.json')
+LABEL_MAP = json.load(open(LABEL_MAP_FILE))
 
 ## Set-Up some CONSTANTS
 QUESTION_ALIAS = {
@@ -80,9 +82,12 @@ SPEAKER_FIELDS = ['name', 'country', 'bio', 'org', 'size',
 SESSION_FIELDS = ['submitted', 'title', 'type', 'theme', 'difficulty',
                   'abstract']
 
-
 ## Shared Functions
 
+def _normalize_value(key, value):
+    return LABEL_MAP.get(key, {}).get(value, value)
+
+    
 def _clean_twitter(handle):
     handle = str(handle or "")  # makes sure we're working with a string
     handle = handle.lstrip('@')  # clear any existing @ if present
@@ -132,7 +137,7 @@ def _get_data(url, params):
                 value = _clean_twitter(value)
                 proposal[alias] = value
             else:
-                proposal[alias] = value
+                proposal[alias] = _normalize_value(alias, value)
 
         else:
             proposal['theme'] = '; '.join(sorted(proposal['theme']))
