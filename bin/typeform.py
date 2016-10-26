@@ -55,7 +55,10 @@ url = config['url']
 params = config['params']
 
 LABEL_MAP_FILE = os.path.join(BASE_PATH, 'label_map.json')
-LABEL_MAP = json.load(open(LABEL_MAP_FILE))
+try:
+    LABEL_MAP = json.load(open(LABEL_MAP_FILE))
+except Exception:
+    LABEL_MAP = {}
 
 ## Set-Up some CONSTANTS
 QUESTION_ALIAS = {
@@ -82,12 +85,15 @@ SPEAKER_FIELDS = ['name', 'country', 'bio', 'org', 'size',
 SESSION_FIELDS = ['submitted', 'title', 'type', 'theme', 'difficulty',
                   'abstract']
 
+ALL_FIELDS = SPEAKER_FIELDS + SESSION_FIELDS
+
+
 ## Shared Functions
 
 def _normalize_value(key, value):
     return LABEL_MAP.get(key, {}).get(value, value)
 
-    
+
 def _clean_twitter(handle):
     handle = str(handle or "")  # makes sure we're working with a string
     handle = handle.lstrip('@')  # clear any existing @ if present
@@ -363,6 +369,22 @@ def report(obj, cmd, sort):
         else:
             duration = int(duration / 60)
         print("Total duration: ~{} hours".format(duration))
+
+
+@cli.command()
+@click.argument('column', type=click.Choice(ALL_FIELDS))
+@click.argument('query', nargs=-1)
+@click.pass_obj
+def search(obj, column, query):
+    proposals = obj['proposals']
+
+    # slup all the query args and create a single spaced string from it
+    query = ' '.join(query)
+
+    result = proposals[proposals[column].str.contains(query, na=False)]
+
+    print(result[['name', 'title']])
+
 
 if __name__ == '__main__':
     cli(obj={})
