@@ -240,6 +240,19 @@ h2 .fa {
   margin-right: 0;
 }
 
+#travel-text {
+  height: 400px;
+  overflow-y: hidden;
+}
+
+#more-text {
+  visibility: visible;
+}
+
+#less-text {
+  visibility: hidden;
+}
+
 /* Mobile device tweaks */
 @media screen and (max-width: 752px) {
   .intro-section {
