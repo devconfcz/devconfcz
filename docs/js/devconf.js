@@ -14,15 +14,15 @@ function scroll_to_section(section /* Pass element id with # */) {
         $('#travel-text').animate({
             'height': travel_height
         }, 2500)
-        $('#more-text').css('visibility', 'hidden')
-        $('#less-text').css('visibility', 'visible')
+        $('#more-text').css('display', 'none')
+        $('#less-text').css('display', 'inherit')
     });
     $('#less-text').click(function() {
         $('#travel-text').animate({
             'height': '400px'
         }, 2500)
-        $('#more-text').css('visibility', 'visible')
-        $('#less-text').css('visibility', 'hidden')
+        $('#more-text').css('display', 'inherit')
+        $('#less-text').css('display', 'none')
     })
 
     // get distance from top of the bottom logo border

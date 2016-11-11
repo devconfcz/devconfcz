@@ -247,11 +247,11 @@ h2 .fa {
 }
 
 #more-text {
-  visibility: visible;
+  display: inherit;
 }
 
 #less-text {
-  visibility: hidden;
+  display: none;
 }
 
 /* Mobile device tweaks */
