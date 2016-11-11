@@ -243,6 +243,7 @@ h2 .fa {
 #travel-text {
   height: 400px;
   overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 #more-text {
