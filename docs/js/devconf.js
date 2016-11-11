@@ -13,14 +13,14 @@ function scroll_to_section(section /* Pass element id with # */) {
         e.stopPropagation();
         $('#travel-text').animate({
             'height': travel_height
-        })
+        }, 2500)
         $('#more-text').css('visibility', 'hidden')
         $('#less-text').css('visibility', 'visible')
     });
     $('#less-text').click(function() {
         $('#travel-text').animate({
             'height': '400px'
-        })
+        }, 2500)
         $('#more-text').css('visibility', 'visible')
         $('#less-text').css('visibility', 'hidden')
     })
