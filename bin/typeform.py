@@ -503,6 +503,8 @@ Type:  {}
 Track: {}
 Difficulty: {}
 Duration (inc. Q&A): {} minutes
+Abstract:
+    {}
 
 Speakers
 ========
@@ -519,6 +521,20 @@ Avatar:  {}
 Bio:
 {}
 
+'''
+
+    email_update = '''
+    Woops! Please note that the correct email address is info@devconf.cz!
+
+    Also, send me a short one or two paragraph description of your talk,
+    including a blurb about what folks will learn by attending for publication
+    on our web-site and in our printed conference brochure. It should be
+    between 140 and 600 characters.
+
+    In case you didn't save a copy of your abstract before submitting,
+    we've included it for you below.
+
+    {}
 '''
 
     print('ACCEPTED' + '*' * 79)
@@ -553,13 +569,14 @@ Bio:
             title = _sess['title']
             _type = _sess['type']
             level = submissions_db[submissions_db['id'] == _sess['session_id']].difficulty.values[0]
-            #import ipdb; ipdb.set_trace()
             track = _sess['track']
             _start = _sess['session_duration'].split(':')[1]
             _qa = _sess['session_qa'].split(':')[1]
             duration = int(_start) + int(_qa)
+            abstract = submissions_db[submissions_db['id'] == _sess['session_id']].abstract.values[0]
+            #import ipdb; ipdb.set_trace()
             _sess_str = _sess_template.format(
-                title, _type, track, level, duration)
+                title, _type, track, level, duration, abstract)
             _sess_spkrs_str = ''
             for _s in _spkrs:
                 name = _s['name']
@@ -576,11 +593,12 @@ Bio:
                 _sess_spkrs_str += _spkr
             all_sessions += _sess_str + _sess_spkrs_str
 
-        body = email_accept.format(all_sessions)
+        #body = email_accept.format(all_sessions)
+        body = email_update.format(all_sessions)
         #to = "cward@redhat.com"
         to = speaker
         sender = "info@devconf.cz"
-        subject = "[{}] DevConf.cz 2017 - Submission(s) ACCEPTED"
+        subject = "[{}] UPDATE - DevConf.cz 2017 - Submission(s) ACCEPTED"
         subject = subject.format(speaker)
         msgHtml = body.replace('\n', '<br>')
         msgPlain = body
@@ -617,10 +635,10 @@ Bio:
         subject = subject.format(spkr)
         msgHtml = body.replace('\n', '<br>')
         msgPlain = body
-        print('{} of {} [{}]'.format(x, y, spkr))
+        #print('{} of {} [{}]'.format(x, y, spkr))
         x += 1
-        SendMessage(sender, to, subject, msgHtml, msgPlain)
-        time.sleep(.1)
+        #SendMessage(sender, to, subject, msgHtml, msgPlain)
+        #time.sleep(.1)
         #print(body)
 
         #import ipdb; ipdb.set_trace()
@@ -735,7 +753,7 @@ free access to their new wellness center!
 
 To secure your reservation, send an email ASAP with the following information
 TO: hotel@hotelavanti.cz
-CC: info@devconf.com
+CC: info@devconf.cz
 SUBJECT: DevConf.cz Speaker Reservation - $your_name
 
  * Whether you are requesting a single / double *classic* room
