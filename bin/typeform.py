@@ -34,6 +34,7 @@ EOT
 from collections import defaultdict, Counter
 import datetime
 import json
+import numpy as np
 import os
 import re
 import requests
@@ -947,6 +948,38 @@ def schedule(obj):
 
 
     #import ipdb; ipdb.set_trace()
+
+
+@cli.command()
+@click.pass_obj
+def cleanup(obj):
+    speakers_db = pd.read_csv(
+        '/home/cward/Downloads/DevConf.cz - MASTER db - speakers_clean.csv')
+    submissions_db = pd.read_csv(
+        '/home/cward/Downloads/DevConf.cz - MASTER db - submissions_clean.csv')
+    sched = pd.read_csv('/home/cward/Downloads/DevConf.cz 2017 - Program Draft - All Sessions.csv')
+    cfp_db = pd.read_csv('/home/cward/Downloads/Devconf.cz CfP Submissions - SOURCE - CLEAN Talks MASTER.csv')
+
+    split_speakers = lambda x: [y.strip() for y in x.split(';')]
+    # make the list of speakers a list of speakers
+    sched['speakers'] = sched.speakers.map(split_speakers)
+
+    # remove all talks that aren't in the schedule
+    # remove all speakers that don't have talks in the schedule
+
+    sessions = set(sched['session_id'].tolist())
+    flatten = lambda l: [item for sublist in l for item in sublist]
+    speakers = set(flatten(sched['speakers'].tolist()))
+
+    submissions = submissions_db[submissions_db['id'].isin(sessions)].drop_duplicates()
+    submissions = submissions.replace(np.nan,' ', regex=True)
+    submissions.sort_values('id')
+    speakers = speakers_db[speakers_db['email'].isin(speakers)].drop_duplicates()
+    speakers = speakers.replace(np.nan,' ', regex=True)
+    speakers.sort_values('email')
+    submissions.to_csv('/home/cward/Downloads/submissions.csv')
+    speakers.to_csv('/home/cward/Downloads/speakers.csv')
+
 
 
 if __name__ == '__main__':
