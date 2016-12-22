@@ -228,8 +228,8 @@ h3.first {
 }
 
 .footer-section {
-  height: 20px;
   background: #000;
+  padding: 20px;
 }
 
 .fa {
