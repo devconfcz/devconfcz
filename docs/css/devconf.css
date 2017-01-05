@@ -260,6 +260,9 @@ h2 .fa {
 
 .schedule-iframe {
     /* FIXME */
+    border: 0;
+    height: 600px;
+    width: 100%;
 }
 
 /* Mobile device tweaks */
