@@ -255,7 +255,7 @@ h2 .fa {
 }
 
 .schedule-section {
-    /* FIXME */
+    padding-bottom: 0;
 }
 
 .schedule-iframe {
