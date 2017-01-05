@@ -254,6 +254,14 @@ h2 .fa {
   display: none;
 }
 
+.schedule-section {
+    /* FIXME */
+}
+
+.schedule-iframe {
+    /* FIXME */
+}
+
 /* Mobile device tweaks */
 @media screen and (max-width: 752px) {
   .intro-section {
