@@ -48,6 +48,11 @@ function scroll_to_section(section /* Pass element id with # */) {
 
 
     });
-
+    var parser = document.createElement('a');
+    parser.href = document.URL;
+    accepted_sections = ["about", "venue", "contact"]
+    if ($.inArray(parser.href, accepted_sections)) {
+      scroll_to_section(parser.hash)
+    }
 });
   }(jQuery));
