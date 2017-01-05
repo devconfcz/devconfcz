@@ -50,8 +50,9 @@ function scroll_to_section(section /* Pass element id with # */) {
     });
     var parser = document.createElement('a');
     parser.href = document.URL;
-    accepted_sections = ["about", "venue", "contact"]
-    if ($.inArray(parser.href, accepted_sections)) {
+    accepted_sections = ["#about", "#venue", "#contact"]
+    if ($.inArray(parser.hash, accepted_sections) != -1) {
+      alert("Will call scroll_to_section")
       scroll_to_section(parser.hash)
     }
 });
