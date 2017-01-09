@@ -254,6 +254,17 @@ h2 .fa {
   display: none;
 }
 
+.schedule-section {
+    padding-bottom: 0;
+}
+
+.schedule-iframe {
+    /* FIXME */
+    border: 0;
+    height: 600px;
+    width: 100%;
+}
+
 /* Mobile device tweaks */
 @media screen and (max-width: 752px) {
   .intro-section {
