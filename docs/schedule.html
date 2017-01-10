@@ -76,7 +76,7 @@
   <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" data-offset="50">
 
     <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav id="schedule-navbar" class="navbar navbar-default navbar-fixed-top">
       <a class="hidden-lg" href="index.html">
         <img src="img/devconf-cz-webopt.svg" class="navbar-brand logo-mobile" alt="Back to top"></a>
       <div class="container">
@@ -188,7 +188,7 @@
     </script>
     <script>
   $(document).ready(function(){
-    header_height = $("#bs-example-navbar-collapse-1").height()
+    header_height = $("#schedule-navbar").height()
     $("#schedule").css("padding-top", header_height)
     schedule_height = $(window).height() - $("#schedule-header").height() - header_height
     $(".schedule-iframe").css("height", schedule_height)
