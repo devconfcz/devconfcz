@@ -141,7 +141,7 @@
 
     <!-- Schedule Section -->
     <!-- Reusing cfp section for schedule section -->
-    <section id="schedule" class="schedule-section" style="-webkit-overflow-scrolling:touch;">
+    <section id="schedule" class="schedule-section" style="overflow:auto;-webkit-overflow-scrolling:touch;">
       <h2 style="margin: 0;" id="schedule-header">Schedule</h2>
       <iframe class="schedule-iframe" frameBorder="0" src="https://devconf-cz-2017.firebaseapp.com/sessions.html"></iframe>
     </section>
@@ -191,7 +191,10 @@
       header_height = $("#schedule-navbar").height()
       $("#schedule").css("padding-top", header_height)
       schedule_height = $(window).height() - $("#schedule-header").height() - header_height
-      $(".schedule-iframe").css("height", schedule_height)
+      $(".schedule-iframe").css({
+          height: schedule_height, 
+          width: "100%"
+      })
       $('.navbar-brand').fadeIn()
     }
     $(document).ready(function(){
