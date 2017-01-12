@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta name="generator" content="HTML Tidy for HTML5 for Linux version 5.1.14">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <meta property="og:title" content="DevConf.cz - Code of Conduct">
+    <meta property="og:title" content="DevConf.cz, January 27-29 2017">
     <meta property="og:site_name" content="DevConf.cz">
     <meta property="og:description" content="DevConf.cz is a free and open, annual, 3-day open-source Fedora Linux and JBoss community conference for Red Hat and community developers, DevOps, testers, and documentation writers, organized to sync, share, and hack on upstream projects with the community in the beautiful city of Brno, Czech Republic.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://devconf.cz">
     <meta property="og:image" content="https://devconf.cz/img/devconf_cz_landing_logo.png">
-    <title>DevConf.cz 2017 - Code of Conduct</title>
+    <title>DevConf.cz 2017 - Jan 27-29 - FIT VUT Brno, Czech Republic</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="img/favicon.png" type="image/png">
@@ -25,6 +26,9 @@
       ga('create', 'UA-83802563-1', 'auto');
       ga('send', 'pageview');
     </script>
+
+    <!-- Testimonials -->
+    <link rel="stylesheet" href="css/testimonial.css">
 
     <!-- Font Awesome 4.6.3 -->
     <link rel="stylesheet" href="css/font-awesome.min.css">
@@ -40,6 +44,12 @@
 
     <!-- DevConf style -->
     <link href="css/devconf.css" rel="stylesheet">
+
+    <!-- Custom YouTube style -->
+    <link href="css/yt-js.css" rel="stylesheet">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -58,15 +68,17 @@
     <script src="js/jquery.easing.min.js"></script>
     <script src="js/scrolling-nav.js"></script>
 
-    <!-- Custom JavaScript -->
-    <script src="js/devconf.js"></script>
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.0.0-rc.3/dist/leaflet.js"></script>
 
   </head>
 
   <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" data-offset="50">
 
     <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav id="schedule-navbar" class="navbar navbar-default navbar-fixed-top">
+      <a class="hidden-lg" href="index.html">
+        <img src="img/devconf-cz-webopt.svg" class="navbar-brand logo-mobile" alt="Back to top"></a>
       <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -81,20 +93,21 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li class="hidden-lg active"><a href="index.html#intro">Home</a></li>
+            <li class="hidden-lg"><a href="index.html">Home</a></li>
             <li><a href="index.html#about">About</a></li>
             <li><a href="schedule.html">Schedule</a></li>
-            <li><a href="speakers.html">Speakers</a></li>
+            <li class="active"><a>Speakers</a></li>
             <li><a href="index.html#venue">Venue</a></li>
           </ul>
 
-          <a class="top-branding hidden-md hidden-sm hidden-xs" href="#" onclick="scroll_to_section('#intro')"><img src="img/devconf-cz-webopt.svg" class="navbar-brand" alt="Back to top"></a>
+          <a class="top-branding hidden-md hidden-sm hidden-xs" href="index.html"">
+            <img src="img/devconf-cz-webopt.svg" class="navbar-brand" alt="Back to top"></a>
 
           <ul class="nav navbar-nav navbar-right social">
             <li><a href="coc.html" title="Code of Conduct">Code of Conduct</a></li>
 
             <li><a href="https://telegram.me/joinchat/B1He_UEkuB4fBfY1cKCXRw" class="fa fa-send-o" title="Telegram - Attendees Channel">
-              <span class="hide">Telegram</span>
+                <span class="hide">Telegram</span>
             </a></li>
 
             <li><a href="https://twitter.com/devconf_cz" class="fa fa-twitter" title="Twitter">
@@ -114,8 +127,9 @@
                 <span class="hide">Google+</span>
             </a></li>
 
-            <li><a href="http://www.winterofcode.com" title="Winter of Code">
-                <img src="img/winterofcode_logo_18x_30y.png" height=20 alt="Winter of Code"></a>
+            <li><a href="https://github.com/kejbaly2/devconfcz" class="fa fa-github" title="Github">
+                <span class="hide">GitHub</span>
+            </a></li>
           </ul>
         </div>
 
@@ -125,54 +139,32 @@
       <!-- /.container -->
     </nav>
 
-    <!-- Code of Conduct Section -->
-    <section id="coc" class="coc-section">
+    <!-- Speaker Section -->
+    <section id="schedule" class="schedule-section" style="overflow:auto;-webkit-overflow-scrolling:touch;">
+      <h2 style="margin: 0;" id="schedule-header">Speakers</h2>
+      <iframe class="schedule-iframe" frameBorder="0" src="https://devconf-cz-2017.firebaseapp.com/speakers.html"></iframe>
+    </section>
+
+    <!-- Sponsors -->
+    <section id="sponsors" class="sponsors-section">
+      <h2>Sponsors</h2>
       <div class="container">
+        <h3>This event is brought to you by:</h3>
         <div class="row">
-          <div class="col-sm-12 logo">
-		    <img id="devconf-logo" src="img/devconf-cz-webopt.svg" alt="DevConf.cz">
-            <h1 class="purple">Code of Conduct</h1>
-		  </div>
-          <div class="col-sm-12">
-			  <h3>Our Pledge</h3>
-			  <p>In the interest of fostering an open and welcoming environment, we as speakers, attendees and organizers at DevConf.cz pledge to making participation in our event and community a harassment-free experience for everyone, regardless of age, body size, disability, ethnicity, gender identity and expression, level of experience, nationality, personal appearance, race, religion, or sexual identity and orientation.</p>
-
-			  <h3>Our Standards</h3>
-				<p>Examples of behavior that contributes to creating a positive environment include:</p>
-				<ul>
-					<li>Using welcoming and inclusive language</li>
-					<li>Being respectful of differing viewpoints and experiences</li>
-					<li>Gracefully accepting constructive criticism</li>
-					<li>Focusing on what is best for the community</li>
-					<li>Showing empathy towards other community members</li>
-				</ul>
-
-                <p>Examples of unacceptable behavior by participants include:</p>
-				<ul>
-					<li>The use of sexualized language or imagery and unwelcome sexual attention or advances</li>
-					<li>Trolling, insulting/derogatory comments, and personal or political attacks</li>
-					<li>Public or private harassment</li>
-					<li>Publishing others' private information, such as a physical or electronic address, without explicit permission</li>
-					<li>Other conduct which could reasonably be considered inappropriate in a professional setting</li>
-				</ul>
-
-			  <h3>Our Responsibilities</h3>
-			  <p>Event organizers have the right and responsibility to remove, edit, or reject content, posts, examples and other event contributions that are not aligned to this Code of Conduct, or to ban temporarily or permanently any contributor for other behaviors that they deem inappropriate, threatening, offensive, or harmful.</p>
-
-			  <h3>Scope</h3>
-			  <p>This Code of Conduct applies both within event spaces and in public spaces (physical and virtual) when an individual is representing the project or its community. Examples of representing a project or community include using an official project e-mail address, posting to, sharing or referencing official social media channels.</p>
-
-			  <h3>Enforcement</h3>
-			  <p>Instances of abusive, harassing, or otherwise unacceptable behavior may be reported by contacting the project team lead at info@devconf.cz. All complaints will be reviewed and investigated and will result in a response that is deemed necessary and appropriate to the circumstances. The project team is obligated to maintain confidentiality with regard to the reporter of an incident. Further details of specific enforcement policies may be posted separately.</p>
-
-			  <p>Event participants who do not follow or enforce the Code of Conduct in good faith may face temporary or permanent repercussions as determined by other members of the project's leadership.</p>
-
-			  <h3>Contact Information</h3>
-              <p>Event Organizer: <a href="mailto:info@devconf.cz">Chris Ward</a>
-
-			  <p>&nbsp;</p>
-
-			  <p class="smaller pull-right"><i>This Code of Conduct is adapted from the <a href="http://contributor-covenant.org/version/1/4">Contributor Covenant, version 1.4</a>.</i></p>
+          <div class="col-lg-12">
+            <a href="https://www.redhat.com/en/global/czech-republic"><img alt="Red Hat, Czech" src="img/logo_redhat_rgb_default.png"></a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h4>And supported by our friends at:</h4>
+          </div>
+          <div class="col-lg-4">
+            <a href="https://mojefedora.cz"><img alt="Moje Fedora CZ" src="img/cropped-mojefedora-250x-150y.png"></a>
+          </div>
+          <div class="col-lg-4 hidden-xs hidden-sm"></div>
+          <div class="col-lg-4">
+            <a href="http://www.fit.vutbr.cz/"><img alt="FIT VUT Brno Faculty of Information Technology" src="img/fit_vut_brno_logo-250x-150y.png"></a>
           </div>
         </div>
       </div>
@@ -180,9 +172,36 @@
 
     <footer id="footer" class="footer-section">
       <div class="container">
-        <!-- EMPTY -->
+          <!-- Participation Agreements Section -->
+          <div class="col-xs-12 text-center">
+              <a class="smaller" href="speaker-agreement.html"><i class="fa fa-check-square-o text-warning" aria-hidden="true"></i> Speaker Agreement</a>
+              <a class="smaller" href="coc.html"><i class="fa fa-external-link text-warning" aria-hidden="true"></i> Code of Conduct</a>
+              <a class="smaller" href="media-policy.html"><i class="fa fa-film text-warning" aria-hidden="true"></i> Media Policy</a>
+          </div>
+          <!-- END Participation Agreements Section -->
       </div>
     </footer>
 
+    <script>
+      (function(){var qs,js,q,s,d=document,gi=d.getElementById,ce=d.createElement,gt=d.getElementsByTagName,id='typef_orm',b='https://s3-eu-west-1.amazonaws.com/share.typeform.com/';if(!gi.call(d,id)){js=ce.call(d,'script');js.id=id;js.src=b+'share.js';q=gt.call(d,'script')[0];q.parentNode.insertBefore(js,q)}id=id+'_';if(!gi.call(d,id)){qs=ce.call(d,'link');qs.rel='stylesheet';qs.id=id;qs.href=b+'share-button.css';s=gt.call(d,'head')[0];s.appendChild(qs,s)}})()
+    </script>
+    <script>
+    function schedule_padding() {
+      header_height = $("#schedule-navbar").height()
+      $("#schedule").css("padding-top", header_height)
+      schedule_height = $(window).height() - $("#schedule-header").height() - header_height
+      $(".schedule-iframe").css({
+          height: schedule_height, 
+          width: "100%"
+      })
+      $('.navbar-brand').fadeIn()
+    }
+    $(document).ready(function(){
+      schedule_padding()
+    });
+    $(window).on('resize', function(){
+      schedule_padding()
+    });
+    </script>
   </body>
 </html>
