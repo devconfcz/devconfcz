@@ -195,6 +195,7 @@ h3.first {
 .intro-text {
   margin: 0 auto;
   max-width: 20em;
+  margin-bottom: 15px;
 }
 
 .time-and-place address {
