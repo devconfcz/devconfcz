@@ -111,7 +111,7 @@ a.meetup {
 
 .description {
   color: #000;
-  font-size: .8em;
+  font-size: 1em;
   font-style: italic;
 }
 
@@ -421,7 +421,21 @@ h2 .fa {
     margine-top:25px;
 }
 
-.alert-purple
+.alert-panel-purple
 {
-  background-color: #dcdcff;
+  background-color: #fafaff;
+  border: 1px solid rgba(251, 100, 100, 0.48);
 }
+
+.alert-panel-red
+{
+  background-color: #fbfafa;
+  border: 1px solid rgba(251, 100, 100, 0.48);
+}
+
+/* Multilanguage support
+ * src: http://stackoverflow.com/a/24035422
+ */ 
+.en, .cs { display:none; } /* hide all elements with a language class */
+
+.en:lang(en), .cs:lang(cs) { display:block; } /* show those elements that match their language class */

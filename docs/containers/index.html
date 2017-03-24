@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<!-- FIXME: should default to user's language is CS else EN -->
+<html lang="cs">
+
   <head>
     <meta name="generator" content="HTML Tidy for HTML5 for Linux version 5.1.14">
     <meta charset="utf-8">
@@ -177,34 +180,46 @@
             <div class="tagline">Containers Roadshow</div>
 
             <div class="time-and-place">
-              <address>Czech National Library of Technology</address>
-              <address>Prague, Czech Republic</address>
+              <address class="cs">Národní technická knihovna</address>
+              <address class="cs">Praha 6, Czechia</address>
+              <address class="en">Czech National Library of Technology</address>
+              <address class="en">Prague 6, Czech Republic</address>
               <div class="date">
-                <time datetime="COMING SOON">April 19th, 2017</time>
+                <time datetime="2017-04-19" class="cs">Středa, 19. dubna 2017</time>
+                <time datetime="2017-04-19" class="en">April 19th, 2017</time>
               </div>
             </div>
           </div>
 
           <div class="col-sm-offset-2 col-sm-8 intro-content">
-            <h2 class='description'> DevConf.cz in collaboration with the <a href="http://prgcont.cz/">Prague Containers community</a> bring you the first annual, free, one day containers focused community conference in Prague.</h2>
+            <h2 class='description cs'>
+              DevConf.cz ve spolupráci s komunitou <a href="http://prgcont.cz/">Prague Containers</a> Vám přináší první každoročně pořádanou komunitní konferenci zaměřenou na kontejnery. Konference je jednodenní, zcela zdarma a pořádaná v Praze.
+            </h2>
+            <h2 class='description en'>
+              DevConf.cz in collaboration with the Prague Containers community bring you the first annual, free, one day containers focused community conference in Prague.
+            </h2>
           </div>
 
           <div class="col-sm-offset-2 col-sm-4 intro-content">
             <a href='http://bit.ly/devconfcz-17-roadshow-containers-registration' style="color: #000">
               <i class="fa fa-sign-in" style='font-size: 4em; padding: .2em; margin-right: 0' aria-hidden="true"></i>
             <div class = "alert alert-success">
-              <b>Register</a></b>
+              <b class="cs">Zaregistruj se</b>
+              <b class="en">Registration</b>
+            </a>
             </div>
-            <h4><i>FREE registration. Limited capacity!</i></h4>
+            <h4 class='cs'><i>Registrace ZDARMA. Omezená kapacita!</i></h4>
+            <h4 class='en'><i>FREE registration. Limited capacity!</i></h4>
           </div>
 
           <div class="col-sm-4 intro-content">
             <a href='#schedule' style="color: #000">
               <i class="fa fa-calendar-o" style='font-size: 4em; padding: .2em; margin-right: 0' aria-hidden="true"></i>
             <div class = "alert alert-success">
-              <b>Schedule</a></b>
+              <b>Program</a></b>
             </div>
-            <h4><i>1 day, 8 talks + 2 workshops</i></h4>
+            <h4 class="cs"><i>1 dny, 8 prednasky + 2 workshopy</i></h4>
+            <h4 class="en"><i>1 day, 8 talks + 2 workshops</i></h4>
           </div>
         </div>
 
@@ -221,20 +236,14 @@
                agenda template bootstrap
                source: http://bootsnipp.com/snippets/featured/agenda
               -->
-
-              <h1>Wednesday, April 19th</h1>
-              <p class="red">Check-in / On-site Registration: 09:00 - 10:00</p>
+              <h1 class="cs">Středa, 19. dubna 2017</h1>
+              <h1 class="en">Wednesday April 19, 2017</h1>
+              <p class="cs red">Registrace na místě: 09:00 - 10:00</p>
+              <p class="en red">On-site registration: 09:00 - 10:00</p>
               <br/>
               <div class="agenda">
                   <div class="table-responsive">
                       <table class="table table-condensed table-white-bg larger" cellspacing="0" cellpadding="0">
-                          <thead>
-                              <tr>
-                                  <th>Room</th>
-                                  <th>Time</th>
-                                  <th>Event</th>
-                              </tr>
-                          </thead>
                           <tbody>
                               <tr>
                                   <td class="agenda-room" rowspan="9">
@@ -245,7 +254,8 @@
                                   </td>
                                   <td class="agenda-events">
                                       <div class="agenda-event">
-                                         Keynote: Automate modern app development with containers and OpenShift  
+                                         <p class="cs"></p>
+                                         <p class="en">Keynote: Automate modern app development with containers and OpenShift</p>
                                       </div>
                                   </td>
                               </tr>
@@ -255,7 +265,9 @@
                                   </td>
                                   <td class="agenda-events">
                                       <div class="agenda-event">
-                                          Linux Containers - the DIY way - Vilibald Vanca
+                                         <p class="cs"></p>
+                                         <p class="en"> 
+        Linux Containers - the DIY way - Vilibald Vanca</p>
                                       </div>
                                   </td>
                               </tr>
@@ -265,7 +277,9 @@
                                   </td>
                                   <td class="agenda-events">
                                       <div class="agenda-event">
-                                          How to develop containers for the enterprise - Honza Horak
+                                         <p class="cs"></p>
+                                         <p class="en">
+       How to develop containers for the enterprise - Honza Horak</p>
                                       </div>
                                   </td>
                               </tr>
@@ -275,7 +289,9 @@
                                   </td>
                                   <td class="agenda-events">
                                       <div class="agenda-event">
-                                          Docker containers and black holes && Reproducibility - Matus Kocka + Frantisek Kluknavsky
+                                          <p class="cs"></p>
+                                         <p class="en">
+      Docker containers and black holes && Reproducibility - Matus Kocka + Frantisek Kluknavsky</p>
                                       </div>
                                   </td>
                               </tr>
@@ -285,7 +301,8 @@
                                   </td>
                                   <td class="agenda-events">
                                       <div class="agenda-event">
-                                          <i>Lunch Break</i>
+                                         <p class="cs"></p>
+                                         <p class="en"><i>Lunch Break</i></p>
                                       </div>
                                   </td>
                               </tr>
@@ -295,7 +312,9 @@
                                   </td>
                                   <td class="agenda-events">
                                       <div class="agenda-event">
-                                          Managing containers with Ansible - Peter Schiffer 
+                                         <p class="cs"></p>
+                                         <p class="en">
+       Managing containers with Ansible - Peter Schiffer </p>
                                       </div>
                                   </td>
                               </tr>
@@ -305,7 +324,9 @@
                                   </td>
                                   <td class="agenda-events">
                                       <div class="agenda-event">
-                                          Containers in Production - Stanislav Polasek
+                                         <p class="cs"></p>
+                                         <p class="en">
+       Containers in Production - Stanislav Polasek</p>
                                       </div>
                                   </td>
                               </tr>
@@ -315,7 +336,9 @@
                                   </td>
                                   <td class="agenda-events">
                                       <div class="agenda-event">
-                                          OpenShift pipelines - Vaclav Pavlin + David Becvarik
+                                         <p class="cs"></p>
+                                         <p class="en">
+       OpenShift pipelines - Vaclav Pavlin + David Becvarik</p>
                                       </div>
                                   </td>
                               </tr>
@@ -325,13 +348,16 @@
                                   </td>
                                   <td class="agenda-events">
                                       <div class="agenda-event">
-                                          Keynote: Demo time! - David Becvarik + Vasek Pavlin
+                                        <p class="cs"></p>
+                                        <p class="en">
+       Keynote: Demo time! - David Becvarik + Vasek Pavlin</p>
                                       </div>
                                   </td>
                               </tr>
                               <tr>
                                   <td class="agenda-room" rowspan="3">
-                                      Workshop Room
+                                    <p class="cs"></p>
+                                    <p class="en">Workshop Room</p>
                                   </td>
                                   <td class="agenda-time"></td>
                                   <td class="agenda-events"></td>
@@ -342,7 +368,9 @@
                                   </td>
                                   <td class="agenda-events">
                                       <div class="agenda-event">
-                                          OpenShift 101 - Jiri Kolar
+                                         <p class="cs"></p>
+                                         <p class="en">
+       OpenShift 101 - Jiri Kolar
                                       </div>
                                   </td>
                               </tr>
@@ -352,7 +380,9 @@
                                   </td>
                                   <td class="agenda-events">
                                       <div class="agenda-event">
-                                          Advanced container deep-dive - Tomas Tomecek, Peter Schiffer
+                                        <p class="cs"></p>
+                                        <p class="en">
+      Advanced container deep-dive - Tomas Tomecek, Peter Schiffer</p>
                                       </div>
                                   </td>
                               </tr>
@@ -372,108 +402,117 @@
       <div class="container"><br><br>
           
        <div class="col-md-4">
-          <div class="alert alert-purple">
+          <div class="alert alert-panel-purple">
           <div class="panel-body">
               <img src="img/vwanca.jpg" class="pic_ina img-thumbnail"/>
               <div class="con_ina">
               <b> Vilibald Wanca </b><br>
-                Long-time into Lisp & assembler. Now, client server bridge builder
+              <p class="cs"></p>
+              <p class="en">Long-time into Lisp & assembler. Now, client server bridge builder</p>
               </div>             
           </div>
           </div>
       </div>
           
        <div class="col-md-4">
-          <div class="alert alert-danger">
+          <div class="alert alert-panel-red">
           <div class="panel-body">
               <img src="img/.jpg" class="pic_ina img-thumbnail"/>
               <div class="con_ina">
               <b> David Becvarik </b><br>
-               COMING SOON ...
+              <p class="cs"></p>
+              <p class="en">COMING SOON ...</p>
               </div>             
           </div>
           </div>
       </div>
           
        <div class="col-md-4">
-          <div class="alert alert-purple">
+          <div class="alert alert-panel-purple">
           <div class="panel-body">
               <img src="img/.jpg" class="pic_ina img-thumbnail"/>
               <div class="con_ina">
               <b> Stanislav Polasek </b><br>
-               COMING SOON ...
+              <p class="cs"></p>
+              <p class="en">COMING SOON ...</p>
               </div>             
           </div>
           </div>
       </div>
 
         <div class="col-md-4">
-          <div class="alert alert-danger">
+          <div class="alert alert-panel-red">
             <div class="panel-body">
                 <img src="img/hhorak.jpg" class="pic_ina img-thumbnail"/>
                 <div class="con_ina">
                 <b> Honza Horak </b><br>
-                  Associate Manager, Software Engineering, Red Hat
+                <p class="cs"></p>
+                <p class="en">Associate Manager, Software Engineering, Red Hat</p>
                 </div>             
             </div>
           </div>
         </div>
       
       <div class="col-md-4">
-          <div class="alert alert-danger">
+          <div class="alert alert-panel-red">
             <div class="panel-body">
                 <img src="img/jkolar.jpg" class="pic_ina img-thumbnail"/>
                 <div class="con_ina">
                 <b> Jiri Kolar </b><br>
-                  Red Hat Middleware Solution Architect for CZ-SK and CEE region
+                <p class="cs"></p>
+                <p class="en">Red Hat Middleware Solution Architect for CZ-SK and CEE region</p>
                 </div>             
             </div>
           </div>
       </div>
       
       <div class="col-md-4">
-          <div class="alert alert-danger">
+          <div class="alert alert-panel-red">
             <div class="panel-body">
                 <img src="img/pschiffe.jpg" class="pic_ina img-thumbnail"/>
                 <div class="con_ina">
                 <b> Peter Schiffer </b><br>
-                  Vystudoval FIT VUT v Brně a šestým rokem pracuje v Red Hatu
+                <p class="cs"></p>
+                <p class="en">Vystudoval FIT VUT v Brně a šestým rokem pracuje v Red Hatu</p>
                 </div>             
             </div>
           </div>
       </div>
       
       <div class="col-md-4">
-          <div class="alert alert-danger">
+          <div class="alert alert-panel-red">
             <div class="panel-body">
                 <img src="img/vpavlin.jpg" class="pic_ina img-thumbnail"/>
                 <div class="con_ina">
                 <b> Vašek Pavlin </b><br>
-                  5 years with Red Hat, 4 years with containers
+                <p class="cs"></p>
+                <p class="en">5 years with Red Hat, 4 years with containers</p>
                 </div>             
             </div>
           </div>
       </div>
       
        <div class="col-md-4">
-          <div class="alert alert-danger">
+          <div class="alert alert-panel-red">
           <div class="panel-body">
               <img src="img/rvokal.jpg" class="pic_ina img-thumbnail"/>
               <div class="con_ina">
-              <b> Radek Vokal </b><br>
-                Sr. Engineer at Red Hat, reposnible for userspace in the OS
+              <b> Radek Vokal </b><br/>
+              <p class="cs"></p>
+              <p class="en">Sr. Engineer at Red Hat, reposnible for userspace in the OS</p>
               </div>             
           </div>
           </div>
       </div>
           
        <div class="col-md-4">
-          <div class="alert alert-danger">
+          <div class="alert alert-panel-red">
           <div class="panel-body">
               <img src="img/ttomacek.jpg" class="pic_ina img-thumbnail"/>
               <div class="con_ina">
-              <b> Tomas Tomecek </b><br>
-                Engineer; Hacker; Speaker; Tinker; Red Hatter
+              <b> Tomas Tomecek </b><br/>
+              <p class="cs"></p>
+              <p class="en">Engineer; Hacker; Speaker; Tinker; Red Hatter</p>
               </div>             
           </div>
           </div>
@@ -483,15 +522,18 @@
 
     <!-- VENUE -->
     <section id="venue" class="venue-section">
-      <h2>Venue</h2>
+      <h2 class="cs">Prostory konference</h2>
+      <h2 class="en">Venue</h2>
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2559.057696711029!2d14.388444815960659!3d50.103927020153364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x470b94e8b61a7d13%3A0x917af83b84a0902!2zTsOhcm9kbsOtIHRlY2huaWNrw6Ega25paG92bmE!5e0!3m2!1sen!2sus!4v1490016076417" style="width: 100%; height: 400px; z-index: 0; border:0" frameborder=0></iframe>
     </section>
 
     <!-- Sponsors -->
     <section id="sponsors" class="sponsors-section">
-      <h2>Sponsors</h2>
+      <h2 class="cs">Sponzoři</h2>
+      <h2 class="en">Sponsors</h2>
       <div class="container">
-        <h3>This event is sponsored by</h3>
+        <h3 class="cs">Tuto událost Vám přináší</h3>
+        <h3 class="en">This event is brought to you by:</h3>
         <div class="row">
           <div class="col-lg-12">
             <a href="https://www.redhat.com/en/global/czech-republic"><img alt="Red Hat, Czech" src="../img/logo_redhat_rgb_default.png"></a>
@@ -499,7 +541,8 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <h4>And supported by our friends at</h4>
+            <h4 class="cs">A je podporována našimi přáteli v</h4>
+            <h4 class="en">And supported by our friends at:</h4>
           </div>
 
           <div class="col-lg-12">
