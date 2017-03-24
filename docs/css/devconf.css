@@ -43,6 +43,10 @@ a.meetup {
   font-size: .8em;
 }
 
+.larger {
+  font-size: 1.4em;
+}
+
 .btn {
   user-select: none;
   -moz-user-select: none;
@@ -267,7 +271,7 @@ h3.first {
   text-align: center;
 }
 
-.program-section {
+.schedule-section {
   background: #eee;
 }
 .footer-section {
@@ -378,6 +382,7 @@ h2 .fa {
 
 /* Times */
 .agenda .agenda-time { 
+  font-size: .8em;
   font-family: monospace;
   width: 150px; 
 } 
@@ -391,4 +396,32 @@ h2 .fa {
 
 @media (max-width: 767px) {
     
+}
+
+/* Profile picture bootstrap
+ * src: http://bootsnipp.com/snippets/DV0xz
+ */
+
+.pic_ina
+{
+    height:90px;
+    width:30%;
+    float:left;
+}
+.con_ina
+{
+    height:100px;
+    width:67%;
+    margin-left:3%;
+    float:left;
+}
+.btn_inr
+{
+    float:right;
+    margine-top:25px;
+}
+
+.alert-purple
+{
+  background-color: #dcdcff;
 }
