@@ -101,6 +101,10 @@ a.meetup {
   color: #8786df;
 }
 
+.red {
+  color: #820000;
+}
+
 .description {
   color: #000;
   font-size: .8em;
@@ -263,6 +267,9 @@ h3.first {
   text-align: center;
 }
 
+.program-section {
+  background: #eee;
+}
 .footer-section {
   background: #000;
   padding: 25px;
@@ -334,4 +341,54 @@ h2 .fa {
   .navbar {
     display: block!important;
   }
+}
+
+
+
+/* agenda template bootstrap
+ * source: http://bootsnipp.com/snippets/featured/agenda
+ */
+
+.table-grey-bg {
+  background: #eee;
+}
+
+.table-white-bg {
+  background: #fff;
+}
+
+.agenda {  
+  font-size: .8em;
+}
+
+/* Dates */
+.agenda .agenda-date { width: 170px; }
+.agenda .agenda-date .dayofmonth {
+  width: 40px;
+  font-size: 36px;
+  line-height: 36px;
+  float: left;
+  text-align: right;
+  margin-right: 10px; 
+}
+.agenda .agenda-date .shortdate {
+  font-size: 0.75em; 
+}
+
+
+/* Times */
+.agenda .agenda-time { 
+  font-family: monospace;
+  width: 150px; 
+} 
+
+
+/* Events */
+.agenda .agenda-events {  } 
+.agenda .agenda-events .agenda-event {  
+/*  font-weight: bold; */
+} 
+
+@media (max-width: 767px) {
+    
 }
