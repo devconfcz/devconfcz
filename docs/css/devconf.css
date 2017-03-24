@@ -233,6 +233,7 @@ h3.first {
   max-width: 25em;
   /*margin-bottom: 15px;*/
   color: #111111;
+  min-height: 6em;
 }
 
 .time-and-place address {
