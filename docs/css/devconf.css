@@ -109,6 +109,10 @@ a.meetup {
   color: #820000;
 }
 
+.orange {
+  color: hsl(36, 100%, 40%);
+}
+
 .description {
   color: #000;
   font-size: 1em;
