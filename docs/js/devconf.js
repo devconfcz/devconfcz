@@ -8,46 +8,57 @@ function scroll_to_section(section /* Pass element id with # */) {
 
 (function ($) {
   $(document).ready(function(){
-    var travel_height = $('#travel-text')[0].scrollHeight;
-    $('#more-text').click(function(e) {
-        e.stopPropagation();
-        $('#travel-text').animate({
-            'height': travel_height
-        }, 1500)
-        $('#more-text').css('display', 'none')
-        $('#less-text').css('display', 'inherit')
+    $('.venue-section iframe').click(function() {
+        $('.venue-section iframe').css("pointer-events", "auto");
+        alert("Bump")
     });
-    $('#less-text').click(function() {
-        $('#travel-text').animate({
-            'height': '400px'
-        }, 1500)
-        $('#more-text').css('display', 'inherit')
-        $('#less-text').css('display', 'none')
-    })
 
-    // get distance from top of the bottom logo border
-    logo_pos = $("#devconf-logo").offset().top - $("#page-top").offset().top
+    $('.venue-sectio').mouseleave(function() {
+        $('.venue-section iframe').css("pointer-events", "none"); 
+    });
 
-    // user can load already scrolled page (eg. refreshing, ...); check it even on document ready
-    if ($(this).scrollTop() > logo_pos) {
-      $('.navbar-brand').fadeIn();
-    } else {
-      $('.navbar-brand').fadeOut();
+    if ($('#travel-text').length) {
+         var travel_height = $('#travel-text')[0].scrollHeight;
+        $('#more-text').click(function(e) {
+            e.stopPropagation();
+            $('#travel-text').animate({
+                'height': travel_height
+            }, 1500)
+            $('#more-text').css('display', 'none')
+            $('#less-text').css('display', 'inherit')
+        });
+        $('#less-text').click(function() {
+            $('#travel-text').animate({
+                'height': '400px'
+            }, 1500)
+            $('#more-text').css('display', 'inherit')
+            $('#less-text').css('display', 'none')
+        })
     }
 
-    // hook on scroll and show/hide navbar
-    $(function () {
-      $(window).scroll(function () {
-        // Keep amount of things here at minimum to keep it smooth on low-end devices
+    // get distance from top of the bottom logo border
+    if ($("#devconf-logo").length) {
+        logo_pos = $("#devconf-logo").offset().top - $("#page-top").offset().top
+
+        // user can load already scrolled page (eg. refreshing, ...); check it even on document ready
         if ($(this).scrollTop() > logo_pos) {
-          $('.navbar-brand').fadeIn();
+        $('.navbar-brand').fadeIn();
         } else {
-          $('.navbar-brand').fadeOut();
+        $('.navbar-brand').fadeOut();
         }
-      });
 
-
-    });
+        // hook on scroll and show/hide navbar
+        $(function () {
+        $(window).scroll(function () {
+            // Keep amount of things here at minimum to keep it smooth on low-end devices
+            if ($(this).scrollTop() > logo_pos) {
+            $('.navbar-brand').fadeIn();
+            } else {
+            $('.navbar-brand').fadeOut();
+            }
+        });
+        });
+    }
     var parser = document.createElement('a');
     parser.href = document.URL;
     accepted_sections = ["#about", "#venue", "#contact"]

@@ -248,6 +248,11 @@ h3.first {
 
 .venue-section {
   padding-bottom: 0em;
+  pointer-events: none;
+}
+
+.venue-section iframe{
+  margin-bottom: -8px; /*Gets rid of white space on the bottom, TODO fix and remove this ugly code */
 }
 
 .registration-section,
