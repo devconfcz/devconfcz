@@ -10,7 +10,6 @@ function scroll_to_section(section /* Pass element id with # */) {
   $(document).ready(function(){
     $('.venue-section iframe').click(function() {
         $('.venue-section iframe').css("pointer-events", "auto");
-        alert("Bump")
     });
 
     $('.venue-sectio').mouseleave(function() {
