@@ -43,6 +43,10 @@ a.meetup {
   font-size: .8em;
 }
 
+.larger {
+  font-size: 1.4em;
+}
+
 .btn {
   user-select: none;
   -moz-user-select: none;
@@ -105,9 +109,13 @@ a.meetup {
   color: #820000;
 }
 
+.orange {
+  color: hsl(36, 100%, 40%);
+}
+
 .description {
   color: #000;
-  font-size: .8em;
+  font-size: 1em;
   font-style: italic;
 }
 
@@ -229,6 +237,7 @@ h3.first {
   max-width: 25em;
   /*margin-bottom: 15px;*/
   color: #111111;
+  min-height: 6em;
 }
 
 .time-and-place address {
@@ -272,7 +281,7 @@ h3.first {
   text-align: center;
 }
 
-.program-section {
+.schedule-section {
   background: #eee;
 }
 .footer-section {
@@ -383,6 +392,7 @@ h2 .fa {
 
 /* Times */
 .agenda .agenda-time { 
+  font-size: .8em;
   font-family: monospace;
   width: 150px; 
 } 
@@ -397,3 +407,45 @@ h2 .fa {
 @media (max-width: 767px) {
     
 }
+
+/* Profile picture bootstrap
+ * src: http://bootsnipp.com/snippets/DV0xz
+ */
+
+.pic_ina
+{
+    height:90px;
+    width:30%;
+    float:left;
+}
+.con_ina
+{
+    height:100px;
+    width:67%;
+    margin-left:3%;
+    float:left;
+}
+.btn_inr
+{
+    float:right;
+    margine-top:25px;
+}
+
+.alert-panel-purple
+{
+  background-color: #fafaff;
+  border: 1px solid rgba(251, 100, 100, 0.48);
+}
+
+.alert-panel-red
+{
+  background-color: #fbfafa;
+  border: 1px solid rgba(251, 100, 100, 0.48);
+}
+
+/* Multilanguage support
+ * src: http://stackoverflow.com/a/24035422
+ */ 
+.en, .cs { display:none; } /* hide all elements with a language class */
+
+.en:lang(en), .cs:lang(cs) { display:block; } /* show those elements that match their language class */
