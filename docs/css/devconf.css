@@ -414,8 +414,8 @@ h2 .fa {
 
 .pic_ina
 {
-    height:90px;
-    width:30%;
+    max-height:90px;
+    max-width:30%;
     float:left;
 }
 .con_ina
