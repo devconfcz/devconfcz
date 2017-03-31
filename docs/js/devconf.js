@@ -8,11 +8,11 @@ function scroll_to_section(section /* Pass element id with # */) {
 
 (function ($) {
   $(document).ready(function(){
-    $('.venue-section iframe').click(function() {
+    $('.venue-section').click(function() {
         $('.venue-section iframe').css("pointer-events", "auto");
     });
 
-    $('.venue-sectio').mouseleave(function() {
+    $('.venue-section').mouseleave(function() {
         $('.venue-section iframe').css("pointer-events", "none"); 
     });
 
