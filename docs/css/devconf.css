@@ -150,6 +150,11 @@ a.meetup {
   padding-left: 10px;
 }
 
+.navbar-flag{
+  height: 16.2px;
+  cursor: pointer;
+}
+
 .top-branding {
   transform: translateX(-50%);
   left: 50%;
@@ -283,6 +288,14 @@ h3.first {
 
 .sponsors-section {
   text-align: center;
+}
+
+.sponsor {
+  height: 160px;
+}
+
+.sponsor-desc {
+  display: none;
 }
 
 .schedule-section {
@@ -432,7 +445,7 @@ h2 .fa {
 .btn_inr
 {
     float:right;
-    margine-top:25px;
+    margin-top:25px;
 }
 
 .alert-panel-purple
@@ -450,6 +463,4 @@ h2 .fa {
 /* Multilanguage support
  * src: http://stackoverflow.com/a/24035422
  */ 
-.en, .cs { display:none; } /* hide all elements with a language class */
-
-.en:lang(en), .cs:lang(cs) { display:block; } /* show those elements that match their language class */
+.en { display:none; } /* hide all elements with a language class */
