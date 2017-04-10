@@ -77,6 +77,9 @@
     <!-- Custom YT handler -->
     <script src="../js/yt-js.js"></script>
 
+    <!-- JS Cookie -->
+    <script src="../js/js.cookie.js"></script>
+
   </head>
 
   <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" data-offset="50">
@@ -154,6 +157,12 @@
             <li><a href="mailto:info@devconf.cz" class="fa fa-envelope" title="E-Mail">
                 <span class="hide">E-mail</span>
             </a></li>
+            <li><a onclick="lang_pref('en')" class="cs" title="EN">
+                <img class="navbar-flag" src="../img/gb.svg">
+            </a></li>
+            <li><a onclick="lang_pref('cs')" class="en" title="CZ">
+                <img class="navbar-flag" src="../img/cz.svg">
+            </a></li>
           </ul>
         </div>
 
@@ -220,7 +229,7 @@
           </div>
               <div class="col-sm-12">
                   <p><b>When:</b> Winter of 2018</p>
-                  <p><b>Where:</b> Faculty of Information Technology (VUT FIT) Božetěchova 2 - Brno</p>-->
+                  <p><b>Where:</b> Faculty of Information Technology (VUT FIT) Božetěchova 2 - Brno</p>
               </div>
           <div class="col-xs-12 col-s-6">
             <p>You should consider attending DevConf.cz 2018 if you are:</p>
@@ -308,27 +317,43 @@
       <div class="container">
         <h3>This event is sponsored by</h3>
         <div class="row">
-          <div class="col-lg-12">
-            <a href="https://www.redhat.com/en/global/czech-republic"><img alt="Red Hat, Czech" src="../img/logo_redhat_rgb_default.png"></a>
+          <div class="col-lg-12 sponsor">
+            <a href="https://www.redhat.com/en/global/czech-republic"><img alt="Red Hat, Czech" src="../img/logo_redhat_rgb_default.png">
+              <div class="sponsor-desc">
+                <p class="en">World's leading provider of open source, enterprise IT solutions.</p>
+                <p class="cs">World's leading provider of open source, enterprise IT solutions.</p>
+              </div>
+            </a>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12">
             <h4>And supported by our friends at</h4>
           </div>
+        </div>
 
-          <div class="col-lg-4">
+        <div class="row">
+          <div class="col-lg-4 sponsor">
             <a href="https://mojefedora.cz">
-                <img alt="Moje Fedora CZ" src="../img/cropped-mojefedora-250x-150y.png"></a>
+                <img alt="MojeFedora CZ" src="../img/cropped-mojefedora-250x-150y.png">
+              <div class="sponsor-desc">
+                <p class="en">Czech website about Fedora Linux distribution. Articles, guides, news and place for discussion at one place.</p>
+                <p class="cs">Český web o linuxové distribuci Fedora. Na jednom místě naleznete odborné články, návody, aktuální informace o dění kolem distribuce a místo pro diskuzi.</p>
+              </div>
+            </a>
           </div>
 
-          <div class="col-lg-4 hidden-xs hidden-sm"></div>
-
-          <div class="col-lg-4">
+          <div class="col-lg-4 col-lg-offset-4 sponsor">
             <a href="http://www.fit.vutbr.cz/">
-                <img alt="FIT VUT Brno Faculty of Information Technology" src="../img/fit_vut_brno_logo-250x-150y.png"></a>
+                <img alt="FIT VUT Brno Faculty of Information Technology" src="../img/fit_vut_brno_logo-250x-150y.png">
+              <div class="sponsor-desc">
+                <p class="en">TODO:Description</p>
+                <p class="cs">TODO:Description</p>
+              </div>
+            </a>
           </div>
 
+          </div>
         </div>
       </div>
     </section>
