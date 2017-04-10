@@ -12,12 +12,12 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    version="1.1"
    id="svg2"
-   inkscape:version="0.92pre1 r"
+   inkscape:version="0.92.0 r"
    width="240"
    height="240"
    viewBox="0 0 240 240"
-   sodipodi:docname="devconfcz-icon-square-darkbg.svg"
-   inkscape:export-filename="/home/garrett/Downloads/devconfcz-icon-square-2-blackline.png"
+   sodipodi:docname="devconf-cz-icon-darkbg.svg"
+   inkscape:export-filename="./devconf-cz-icon-darkbg.png"
    inkscape:export-xdpi="360"
    inkscape:export-ydpi="360">
   <metadata
@@ -91,8 +91,8 @@
      showgrid="false"
      inkscape:pagecheckerboard="false"
      inkscape:zoom="1"
-     inkscape:cx="-12.879705"
-     inkscape:cy="61.486287"
+     inkscape:cx="120"
+     inkscape:cy="120"
      inkscape:current-layer="layer2" />
   <g
      inkscape:groupmode="layer"
