@@ -9,20 +9,20 @@ function scroll_to_section(section /* Pass element id with # */) {
 function lang_pref(request) {
     if (request == "en"){
         Cookies.set('language-pref', 'en');
-        $('.cs').css('display', 'none')
+        $('.sk').css('display', 'none')
         $('.en').css('display', 'inherit')
     }
     else {
         Cookies.remove('language-pref');
         $('.en').css('display', 'none')
-        $('.cs').css('display', 'inherit')
+        $('.sk').css('display', 'inherit')
     }
 }
 
 (function ($) {
   $(document).ready(function(){
-    if ((navigator.language != 'cs') || (Cookies.get('language-pref') == 'en')) {
-        $('.cs').css('display', 'none')
+    if ((navigator.language != 'sk') || (Cookies.get('language-pref') == 'en')) {
+        $('.sk').css('display', 'none')
         $('.en').css('display', 'inherit')
     }
     else {
