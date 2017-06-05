@@ -77,6 +77,17 @@
     <!-- Custom JavaScript -->
     <script src="../../../js/devconf.js"></script>
 
+    <script>
+    $(document).ready(function(){
+        if ((navigator.language != 'cs') || (navigator.language != 'sk')){
+            lang_pref("en", 0);
+        }
+        if (navigator.language == 'cs'){
+            lang_pref("sk", 0);
+        }
+    })
+    </script>
+
     <!-- Custom YT handler -->
     <script src="../../../js/yt-js.js"></script>
 

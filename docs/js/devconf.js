@@ -6,26 +6,48 @@ function scroll_to_section(section /* Pass element id with # */) {
  }, 1000);
 }
 
-function lang_pref(request) {
+function lang_pref(request, cookie_set) {
     if (request == "en"){
-        Cookies.set('language-pref', 'en');
+        if (cookie_set){
+            Cookies.set('language-pref', 'en');
+        }
         $('.sk').css('display', 'none')
+        $('.cs').css('display', 'none')
         $('.en').css('display', 'inherit')
     }
-    else {
-        Cookies.remove('language-pref');
+    if (request == "cs"){
+        if (cookie_set){
+            Cookies.set('language-pref', 'cs');
+        }
+        $('.sk').css('display', 'none')
+        $('.cs').css('display', 'inherit')
         $('.en').css('display', 'none')
+    }
+    if (request == "sk"){
+        if (cookie_set){
+            Cookies.set('language-pref', 'sk');
+        }
         $('.sk').css('display', 'inherit')
+        $('.cs').css('display', 'none')
+        $('.en').css('display', 'none')
     }
 }
 
 (function ($) {
   $(document).ready(function(){
-    if ((navigator.language != 'sk') || (Cookies.get('language-pref') == 'en')) {
+    if ((Cookies.get('language-pref') == 'en') || ((navigator.language != 'cs') && (navigator.language != 'sk'))) {
         $('.sk').css('display', 'none')
+        $('.cs').css('display', 'none')
         $('.en').css('display', 'inherit')
     }
-    else {
+    if ((Cookies.get('language-pref') == 'cs') || (navigator.language == 'cs')) {
+        $('.sk').css('display', 'none')
+        $('.cs').css('display', 'inherit')
+        $('.en').css('display', 'none')
+    }
+    if ((Cookies.get('language-pref') == 'sk') || (navigator.language == 'sk')) {
+        $('.sk').css('display', 'inherit')
+        $('.cs').css('display', 'none')
         $('.en').css('display', 'none')
     }
     $('.venue-section').click(function() {
