@@ -7,6 +7,9 @@ function scroll_to_section(section /* Pass element id with # */) {
 }
 
 function lang_pref(request, cookie_set) {
+    if ("undefined" === typeof cookie_set){
+        cookie_set = 1;
+    }
     if (request == "en"){
         if (cookie_set){
             Cookies.set('language-pref', 'en');
